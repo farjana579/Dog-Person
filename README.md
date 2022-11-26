@@ -1,4 +1,4 @@
-## This is a machine learning web application designed by team the Webtoon.
+## This is a machine learning web application designed by the team Webtoon.
 We are students at the University of Chittagong. 
 This project is an assignment provided by our instructor in the Web Engineering course. 
 

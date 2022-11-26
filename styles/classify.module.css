@@ -1,0 +1,112 @@
+.container {
+    margin: 20px 30px;
+    padding: 20px 0 0 0;
+    background-image: linear-gradient(-120deg, rgba(215, 224, 221, 0.395), rgb(56, 225, 188), rgb(83, 73, 167));
+    border-radius: 20px;
+    display: flex;
+}
+
+.imageContainer {
+    display: flex;
+    align-items: flex-end;
+    width: 60%;
+}
+
+.imageContainer img {
+    width: 100%;
+}
+
+
+.classifyContainer {
+    width: 39%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    border: 1px solid;
+    text-align: center;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    border-radius: 20px;
+    background-color: white;
+    box-shadow: inset 3px 3px 5px 3px gray;
+    padding: 20px;
+}
+
+
+.pageTitle {
+    font-size: 1.8em;
+}
+
+.message {
+    font-size: .8em;
+    margin-bottom: 15px;
+}
+
+.pageTitle span {
+    color: #E76F51;
+    font-size: 2em;
+    text-transform: uppercase;
+}
+
+.uploadImage {
+    margin: 0 auto;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 3px 3px 4px rgb(206, 173, 237);
+    border-radius: 12px;
+    /* width: 179px; */
+    width: max-content;
+    margin-bottom: 20px;
+}
+
+.uploadImage input {
+    position: absolute;
+    z-index: 10;
+    left: 0;
+    opacity: 0;
+    padding: 12px 0;
+}
+
+.uploadImage:hover button {
+    background-color: #ed3a0d;
+}
+
+.uploadImage:active button {
+    box-shadow: 1px 1px 4px rgb(206, 173, 237);
+}
+
+.classifyButton,
+.predictButton {
+    background-color: #E76F51;
+    color: white;
+    border-radius: 12px;
+    padding: 9px 12px;
+    outline: 0;
+    font-size: 1.1em;
+    border: 0;
+    transition: background-color .4s ease;
+    box-shadow: 3px 3px 4px rgb(206, 173, 237);
+}
+
+.classifyButton:hover {
+    background-color: #ed3a0d;
+
+}
+
+.classifyButton:active,
+.predictButton:active {
+    box-shadow: 1px 1px 4px rgb(206, 173, 237);
+}
+
+.predictButton {
+    background-color: rgba(0, 128, 0, 0.7);
+    display: block;
+    margin: 20px auto;
+    opacity: .4;
+
+}
+
+.predictButton:hover {
+    background-color: green;
+}

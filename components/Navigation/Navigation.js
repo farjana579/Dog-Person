@@ -17,7 +17,7 @@ const Navigation = () => {
           <li>Home</li>
           <li>Shop</li>
           <li>Medicine</li>
-          <li>Classify</li>
+          <li><a href="/classify">Classify</a></li>
           <button className={styles.loginbtn}>Log In</button>
         </ul>
       </div>

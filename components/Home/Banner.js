@@ -1,5 +1,4 @@
 import React from "react";
-import Navigation from "./Navigation";
 import styles from "../../styles/Home.module.css";
 import image from "../../image/img.png";
 

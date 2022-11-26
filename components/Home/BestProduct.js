@@ -1,5 +1,5 @@
 import React from "react";
-import BestProductCard from "./BestProductCard";
+import ProductCard from "../ProductCard/ProductCard";
 import styles from "../../styles/bestproductcard.module.css";
 import product1 from "../../image/product1.jpg";
 import product2 from "../../image/product2.webp";
@@ -15,21 +15,21 @@ const BestProduct = () => {
         <h1>Best Product</h1>
       </div>
       <div className={styles.bestProductCardContainer}>
-        <BestProductCard
+        <ProductCard
           title="Classifier"
           image={classify.src}
           paragraph="Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quia corporis consequatur neque aliquam! Dicta quasi totam, harum sunt minima dolore?"
-        ></BestProductCard>
-        <BestProductCard
+        ></ProductCard>
+        <ProductCard
           title="Dog Food"
           image={product1.src}
           paragraph="Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quia corporis consequatur neque aliquam! Dicta quasi totam, harum sunt minima dolore?"
-        ></BestProductCard>
-        <BestProductCard
+        ></ProductCard>
+        <ProductCard
           title="Happy Dog"
           image={product2.src}
           paragraph="Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quia corporis consequatur neque aliquam! Dicta quasi totam, harum sunt minima dolore?"
-        ></BestProductCard>
+        ></ProductCard>
       </div>
     </div>
   );

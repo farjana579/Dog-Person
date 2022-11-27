@@ -17,7 +17,6 @@ const Navigation = () => {
         <ul>
           <li>Home</li>
           <li>Shop</li>
-          <li>Medicine</li>
           <li>Classify</li>
           <button className={styles.loginbtn}>Log In</button>
         </ul>

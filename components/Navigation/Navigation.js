@@ -11,7 +11,7 @@ const Navigation = () => {
           <h2>Dog Person</h2>
         </div>
       </div>
-      <div className={styles2.nav_items}>
+      <div className={styles.nav_items}>
         <ul >
           <li>Home</li>
           <li className={styles.shopNav}>Shop

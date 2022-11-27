@@ -5,13 +5,26 @@ import styles2 from '../styles/review.module.css'
 import Review from '../components/Review'
 
 const ProDetails = () => {
+    const handleQuantity = (val) => {
+        const doc = document.getElementById('quantity');
+        if (parseInt(doc.value) === 0 && val === -1)
+            return;
+        doc.value = parseInt(doc.value) + val;
+    }
     return (
         <div className={styles.products}>
-            <h1 className={styles.ph}>Purina Friskies Balance Dog Food with Chicken and Vegetables
-                3Kg</h1>
+            <h1 className={styles.ph}>Purina Friskies Balance Dog Food with Chicken and Vegetables 3Kg</h1>
             {/* initial pic */}
-            <div className={styles.picDes}>
-                < img src={img.src}></img>
+            <div className={styles.infoContainer}>
+                <div className={styles.picDes}>
+                    < img src={img.src}></img>
+                    <div className={styles.morepic}>
+                        <img src={img.src}></img>
+                        <img src={img.src}></img>
+                        <img src={img.src}></img>
+                        <img src={img.src}></img>
+                    </div>
+                </div>
                 <div className={styles.primaryDescription}>
                     <div className={styles.brand}>Brand:  <span>Purina Friskies</span></div>
                     <div className={styles.ratings}>20 Ratings</div>
@@ -23,17 +36,14 @@ const ProDetails = () => {
                         <li>Firm stools thanks to a healthy digestion</li>
                         <li>Supports shiny coat and healthy skin</li>
                     </ul>
-
-
+                    <div className={styles.quantity}>
+                        <span>Quantity</span>
+                        <div onClick={() => handleQuantity(-1)}>-</div>
+                        <input type="number" min={0} defaultValue="0" id="quantity" />
+                        <div onClick={() => handleQuantity(+1)}>+</div>
+                    </div>
+                    <button id={styles.mbtn}>ADD TO CART</button>
                 </div>
-            </div>
-            {/* more pic */}
-            <div className={styles.morepic}>
-                <img src={img.src}></img>
-                <img src={img.src}></img>
-                <img src={img.src}></img>
-                <img src={img.src}></img>
-                <button id={styles.mbtn}>ADD TO CART</button>
             </div>
             {/* product information */}
             <div className={styles.proInformation}>

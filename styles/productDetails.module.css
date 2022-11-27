@@ -1,0 +1,168 @@
+ /* picture and primary description */
+ .products {
+    margin: 30px 60px;
+}
+
+.ph {
+    margin-left: 20px;
+    font-size: 2em;
+}
+
+.brand span {
+    color: rgb(224, 41, 13);
+}
+
+.picDes {
+    display: flex;
+    justify-content: center;
+    height: 500px;
+    width: 1250px;
+    font-weight: 600;
+    padding-top: 30px;
+}
+
+.picDes>img {
+    height: 450px;
+    width: 650px;
+    margin: 0px;
+    padding: 0px;
+
+}
+
+.primaryDescription {
+    margin-left: 100px;
+    margin-right: 0px;
+    padding: 0px;
+}
+
+.primaryDescription h6 {
+    color: grey;
+}
+
+.primaryDescription h4 {
+    margin-top: 10px;
+    font-weight: 400;
+    margin-left: 30px;
+}
+
+.ratings {
+    margin-bottom: 20px;
+    margin-top: 20px;
+    size: 20px;
+}
+
+.price {
+    font-weight: 600;
+    font-size: 25px;
+    font: bolder;
+}
+
+.vat {
+    font-weight: 300;
+    font-size: 12px;
+    font-style: italic;
+    margin-bottom: 15px;
+    margin-top: 15px;
+
+}
+
+.weight {
+    font-weight: 600;
+    font-size: 16px;
+
+}
+
+.about {
+    margin-top: 50px;
+    padding-left: 0px;
+
+}
+
+.about li {
+    padding: 0px;
+    margin-left: 17px;
+    font-weight: 400;
+    font-size: 16px;
+}
+
+/* more pic */
+.morepic {
+    display: flex;
+    margin-left: 105px;
+    padding-top: 20px;
+}
+
+.morepic>img {
+    height: 80px;
+    width: 80px;
+    margin-right: 40px;
+    border-radius: 5%;
+    opacity: .76;
+
+}
+
+#mbtn {
+    Width: 263px;
+    Height: 80px;
+    background-color: #D1CA84;
+    color: white;
+    font-size: large;
+    border: 0px;
+    margin-left: 100px;
+    margin-top: 15px;
+    border-radius: 5%;
+}
+
+#mbtn:hover {
+    background-color:
+        #ff5e00f3;
+    transition: 0.25s;
+
+
+
+}
+
+/* product information */
+.proInformation {
+    margin-top: 80px;
+    padding: 30px;
+}
+
+.headln {
+    font-size: 20px;
+    color: rgba(255, 0, 0, 0.852);
+}
+
+.Information div {
+    display: flex;
+    justify-content: start;
+}
+
+
+.type {
+    background-color: #F2EFEF;
+    border: 1px solid rgba(0, 0, 0, 0.8);
+    text-align: start;
+    padding: 10px;
+    width: 250px;
+    font-weight: 400;
+    font-size: 16px;
+
+}
+
+.info {
+
+    background-color: rgba(255, 255, 255, 0.8);
+    border: 1px solid rgba(0, 0, 0, 0.8);
+    text-align: start;
+    padding: 10px;
+    width: 600px;
+    font-weight: 400;
+    font-size: 16px;
+
+}
+
+/* customer */
+.customer {
+    margin-left: 35px;
+}

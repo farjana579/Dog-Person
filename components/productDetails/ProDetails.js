@@ -1,8 +1,8 @@
 import React from 'react';
-import img from '../image/food.jpg'
-import styles from '../styles/productDetails.module.css'
-import styles2 from '../styles/review.module.css'
-import Review from '../components/Review'
+import img from '../../image/food.jpg'
+import styles from '../../styles/productDetails.module.css'
+import styles2 from '../../styles/review.module.css'
+import Review from '../../components/productDetails/Review'
 
 const ProDetails = () => {
     return (
@@ -22,17 +22,27 @@ const ProDetails = () => {
                         <h3 >About this product</h3>
                         <li>Firm stools thanks to a healthy digestion</li>
                         <li>Supports shiny coat and healthy skin</li>
+                        <div>
+                            {/* qyantity */}
+                            <div className={styles.qnty}>
+                                <div className={styles.quantity}>Quantity</div>
+                                <button>-</button>
+                                <div className={styles.num}>1</div>
+                                <button>+</button>
+                            </div>
+                        </div>
                     </ul>
-
-
                 </div>
             </div>
+
+
             {/* more pic */}
             <div className={styles.morepic}>
                 <img src={img.src}></img>
                 <img src={img.src}></img>
                 <img src={img.src}></img>
                 <img src={img.src}></img>
+
                 <button id={styles.mbtn}>ADD TO CART</button>
             </div>
             {/* product information */}
@@ -74,9 +84,23 @@ const ProDetails = () => {
                     message="I bought this food because it has a lower fat content and because the pieces are larger and makes my Cocker Spaniel and Boxer chew rather than swallow. I am very happy with this dog food because they both lost weight. The kibble is larger in shape and less dense. I am thrilled with it.
                 "></Review>
                 <div className={styles2.cmnt}>
-                    <h3>View All Comments</h3>
-                    <h3>Write Review</h3>
+
+                    <button>View All Comments</button>
+                    <button>Write Review</button>
+
                 </div>
+                <div className={styles2.write}>
+                    
+                    <input type="text" className={styles2.name} placeholder="Name">                      
+                    </input>
+                    <input type="text" className={styles2.reviewHead} placeholder="Your Review">                     
+                    </input>                 
+                    <textarea className={styles2.writecomment}>                      
+                    </textarea>
+                   
+                </div>
+                <input className={styles2.subm} value="submit"></input>
+                
             </div>
         </div>
     );

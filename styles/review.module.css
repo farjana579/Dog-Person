@@ -1,6 +1,6 @@
 /* review */
 .review {
-  margin-bottom: 20px;
+    margin-bottom: 20px;
 }
 
 .name {
@@ -20,12 +20,50 @@
 
 .cmnt {
     display: flex;
-    color: #3E73FA;
 }
 
-.cmnt h3 {
+.cmnt>button {
+    height: 20px;
+    /* width: 90px; */
     margin: 0px;
     margin-left: 20px;
     font-weight: 400;
     font-size: 20px;
+    background-color: white;
+    color: #3E73FA;
+    border: 0px;
+}
+
+/* writecomment  */
+.write {
+    display: flex;
+    flex-direction: column;
+}
+
+.name {
+    margin: 20px 0px 0px 10px;
+    height: 30px;
+    width: 500px;
+    padding: 10px;
+    
+}
+
+.reviewHead {
+    margin: 10px;
+    height: 40px;
+    width: 700px;
+    padding: 10px;
+}
+
+.writecomment {
+    margin-left: 10px;
+    height: 100px;
+    width: 700px;
+    padding: 10px;
+    resize: none;
+}
+
+.subm {
+    margin: 20px;
+    padding: 5px;
 }

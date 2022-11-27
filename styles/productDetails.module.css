@@ -84,6 +84,32 @@
     font-weight: 400;
     font-size: 16px;
 }
+/* quantity */
+.qnty{
+    display: flex;  
+    margin-top: 10px; 
+}
+.quantity{
+    font-weight: 600;
+    size: 25px;
+   padding-right: 25px;
+}
+.qnty>button{
+    margin: 5px;
+    height: 22px;
+    width: 30px;
+ 
+}
+.num{
+    margin: 5px;
+    border:0px
+   
+}
+.qnty>button:hover{
+    background-color: grey;
+    border: 0px;
+    transition:.25s;
+}
 
 /* more pic */
 .morepic {
@@ -108,14 +134,14 @@
     color: white;
     font-size: large;
     border: 0px;
-    margin-left: 100px;
-    margin-top: 15px;
+    margin-left: 250px;
+    margin-top: 10px;
     border-radius: 5%;
 }
 
 #mbtn:hover {
     background-color:
-        #ff5e00f3;
+        #ff5e0090;
     transition: 0.25s;
 
 

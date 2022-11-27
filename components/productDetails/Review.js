@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from '../styles/review.module.css'
+import styles from '../../styles/review.module.css'
 const Review = ({ Name, headline, message }) => {
     return (
         <div className={styles.review}>

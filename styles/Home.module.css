@@ -92,3 +92,112 @@
 .loginbtn {
     margin-left: 20px;
 }
+
+.nav_items {
+    margin-right: 90px;
+    user-select: none;
+}
+
+.nav_items>ul {
+    list-style: none;
+    display: flex;
+}
+
+.nav_items>ul>li {
+    padding: 9px 15px;
+    margin-left: 20px;
+}
+
+.shopNav {
+    position: relative;
+    display: block;
+
+}
+
+.ProductType {
+    list-style-type: none;
+    background-color: rgba(0, 123, 230, 0.555);
+    border-radius: 5px;
+    margin-top: 9px;
+    position: absolute;
+    padding: 0;
+    transition: opacity .9s ease-in;
+    display: none;
+
+
+}
+
+
+.ProductType>li {
+    border-bottom: 2px solid;
+    padding: 5px 10px;
+
+}
+
+.loginbtn {
+    padding: 9px 12px;
+    border: 0;
+    color: white;
+    font-size: 20px;
+    border-radius: 7px;
+    background-color: #E76F51;
+    transition: background-color .4s ease-in;
+}
+
+.btnStyle:hover {
+    background-color: #f14f27;
+}
+
+.loginbtn {
+    margin-left: 20px;
+}
+
+
+.shopNav:hover .ProductType {
+    display: block;
+
+}
+
+.MedicineType {
+    list-style-type: none;
+    background-color: rgba(0, 123, 230, 0.555);
+    border-radius: 5px;
+    margin-top: 9px;
+    position: absolute;
+    padding: 0;
+    left: 110%;
+
+    display: none;
+
+}
+
+.medi:hover .MedicineType {
+    display: block;
+
+}
+
+.MedicineType>li {
+    border-bottom: 2px solid;
+    padding: 5px 10px;
+}
+
+.FoodType {
+    list-style-type: none;
+    background-color: rgba(0, 123, 230, 0.555);
+    border-radius: 5px;
+    margin-top: 9px;
+    position: absolute;
+    padding: 0;
+    left: 110%;
+    top: 20px;
+    display: none;
+}
+
+.food:hover .FoodType {
+    display: block;
+}
+
+.FoodType>li {
+    border-bottom: 2px solid;
+    padding: 5px 10px;
+}

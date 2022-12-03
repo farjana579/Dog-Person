@@ -1,11 +1,19 @@
+import { useState } from 'react';
 import style from '../styles/classify.module.css'
-import puppy from '../image/classifyDog.png'
+
 const Classify = () => {
+    const [puppy, setPuppy] = useState(null)
+    const handleImageUpload = (e) => {
+        setPuppy(URL.createObjectURL(e.target.files[0]))
+    }
     return (
         <div className={style.container}>
 
             <div className={style.imageContainer}>
-                <img src={puppy.src} alt="Puppy" />
+                {
+                    puppy &&
+                    <img src={puppy} alt="Puppy" />
+                }
             </div>
             <div className={style.classifyContainer}>
                 <div>
@@ -17,7 +25,7 @@ const Classify = () => {
                     </div>
                     <div className={style.uploadImage}>
                         <button className={style.classifyButton}>Upload an Image</button>
-                        <input type="file" src="" alt="image input" className={style.imageInput} accept="image/*" />
+                        <input type="file" src="" alt="image input" className={style.imageInput} accept="image/*" onChange={handleImageUpload} />
                     </div>
                     <div style={{ marginBottom: '10px' }}>OR</div>
                     <button className={style.classifyButton}>Capture an Image</button>

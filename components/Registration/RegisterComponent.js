@@ -29,7 +29,7 @@ const RegisterComponent = () => {
             <i>Forget password?</i>
           </a>
           <button className={styles.btnStyle}>Register</button>
-          <a href="/registration">
+          <a href="/login">
             Already have an account?. go to login page.
           </a>
         </form>

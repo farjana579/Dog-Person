@@ -1,10 +1,20 @@
 import { useState } from 'react';
 import style from '../styles/classify.module.css'
-
+import * as tf from '@tensorflow/tfjs'
+import { mod } from '@tensorflow/tfjs';
 const Classify = () => {
     const [puppy, setPuppy] = useState(null)
     const handleImageUpload = (e) => {
         setPuppy(URL.createObjectURL(e.target.files[0]))
+    }
+    async function runmodel() {
+        const model = await tf.loadLayersModel('https://raw.githubusercontent.com/farjana579/Dog-Person-Frontend/main/models/model.json')
+        // console.log(model);
+        // const pred = model.predict(puppy)
+        // console.log(pred);
+    }
+    const handlePredict = () => {
+        runmodel();
     }
     return (
         <div className={style.container}>
@@ -30,7 +40,7 @@ const Classify = () => {
                     <div style={{ marginBottom: '10px' }}>OR</div>
                     <button className={style.classifyButton}>Capture an Image</button>
 
-                    <button className={style.predictButton}>Predict</button>
+                    <button className={style.predictButton} onClick={handlePredict}>Predict</button>
                 </div>
             </div>
         </div>

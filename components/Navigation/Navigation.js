@@ -3,41 +3,57 @@ import logo from "../../image/logo.png";
 const Navigation = () => {
   return (
     <div className={styles.NavLogo}>
-      <div className={styles.logoTitle}>
-        <div className={styles.logo}>
-          <img src={logo.src}></img>
+      <a href="/">
+        <div className={styles.logoTitle}>
+          <div className={styles.logo}>
+            <img src={logo.src}></img>
+          </div>
+          <div className={styles.PageTitle}>
+            <h2>Dog Person</h2>
+          </div>
         </div>
-        <div className={styles.PageTitle}>
-          <h2>Dog Person</h2>
-        </div>
-      </div>
+      </a>
       <div className={styles.nav_items}>
         <ul >
-          <li>Home</li>
-          <li className={styles.shopNav}>Shop
+          <li><a href="/">Home</a></li>
+          <li className={styles.shopNav}><a href="/shop">Shop</a>
             <ul className={styles.ProductType}>
-              <li className={styles.medi}>Medicine
+              <li className={styles.medi}><a href="/shop?type=medicine">Medicine</a>
                 <ul className={styles.MedicineType}>
-                  <li>Antibiotics</li>
-                  <li>Antifungal</li>
-                  <li>Antiparasitic</li>
-                  <li>Steriods</li>
-                  <li>Pain Reliever</li>
+                  <li><a href="/shop?type=medicine&sub-type=Antibiotics">Antibiotics</a></li>
+                  <li><a href="/shop?type=medicine&sub-type=Antifungal">Antifungal</a></li>
+                  <li><a href="/shop?type=medicine&sub-type=Antiparasitic">Antiparasitic</a></li>
+                  <li>
+                    <a href="/shop?type=medicine&sub-type=Antibiotics">Steriods</a>
+                  </li>
+                  <li>
+                    <a href="/shop?type=medicine&sub-type=Antibiotics">Pain Reliever</a>
+                  </li>
                 </ul>
               </li>
-              <li className={styles.food}>Food
+              <li className={styles.food}><a href="/shop?type=food">Food</a>
                 <ul className={styles.FoodType}>
-                  <li>Kibble</li>
-                  <li>Canned</li>
-                  <li>Raw</li>
-                  <li>Semi-Moist</li>
-                  <li>Home Made</li>
+                  <li>
+                    <a href="/shop?type=food&sub-type=Kibble">Kibble</a>
+                  </li>
+                  <li>
+                    <a href="/shop?type=food&sub-type=Canned">Canned</a>
+                  </li>
+                  <li>
+                    <a href="/shop?type=food&sub-type=Raw">Raw</a>
+                  </li>
+                  <li>
+                    <a href="/shop?type=food&sub-type=Semi-Moist">Semi-Moist</a>
+                  </li>
+                  <li>
+                    <a href="/shop?type=food&sub-type=Home-Made">Home Made</a>
+                  </li>
                 </ul>
               </li>
             </ul></li>
-          <li className={styles.classifyNav}>Classify
+          <li className={styles.classifyNav}><a href="/classify">Classify</a>
           </li>
-          <button className={styles.loginbtn}>Log In</button>
+          <button className={styles.loginbtn}><a href="/login">Log In</a></button>
         </ul>
       </div>
     </div>

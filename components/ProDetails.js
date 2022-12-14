@@ -1,10 +1,27 @@
-import React from 'react';
-import img from '../image/food.jpg'
+import React, { useState } from 'react';
 import styles from '../styles/productDetails.module.css'
-import styles2 from '../styles/review.module.css'
-import Review from '../components/Review'
+import ReviewContainer from './ReviewContainer';
 
 const ProDetails = () => {
+    const [current, setCurrent] = useState(0)
+    const [product, setProduct] = useState({
+        picture: ["https://i.ibb.co/Mn8qSVx/image.png",
+            "https://i.ibb.co/L8srR5L/image.png",
+            "https://i.ibb.co/JrMS9Gg/image.png",
+            "https://i.ibb.co/DRrpQFy/image.png",
+            "https://i.ibb.co/xz7bLxt/image.png"
+        ],
+        price: 1106,
+        weight: 6,
+        rating: 572,
+        avg_rating: 2.9669,
+        brand: "Happy Dog",
+        type: "medicine",
+        name: "Mcbride Rocha",
+        email: "mcbriderocha@chillium.com",
+        about: "Ea cillum aliqua exercitation proident ipsum non et in eu aliquip nisi. Cillum duis quis proident laborum esse et dolore. Quis quis non excepteur incididunt aliqua enim. Eu magna fugiat cillum exercitation veniam officia deserunt proident excepteur.",
+        registered: "2016-12-12T02:03:48 -06:00"
+    })
     const handleQuantity = (val) => {
         const doc = document.getElementById('quantity');
         if (parseInt(doc.value) === 0 && val === -1)
@@ -13,24 +30,31 @@ const ProDetails = () => {
     }
     return (
         <div className={styles.products}>
-            <h1 className={styles.ph}>Purina Friskies Balance Dog Food with Chicken and Vegetables 3Kg</h1>
+            <h1 className={styles.ph}>{product.name}</h1>
             {/* initial pic */}
             <div className={styles.infoContainer}>
                 <div className={styles.picDes}>
-                    < img src={img.src}></img>
+                    < img src={product.picture[current]}></img>
                     <div className={styles.morepic}>
-                        <img src={img.src}></img>
-                        <img src={img.src}></img>
-                        <img src={img.src}></img>
-                        <img src={img.src}></img>
+                        {
+                            product?.picture.map((img, index) => {
+                                if (index !== current) {
+                                    return <img onClick={() => setCurrent(index)} src={img} />
+                                }
+                                else {
+                                    return <></>
+                                }
+                            }
+                            )
+                        }
                     </div>
                 </div>
                 <div className={styles.primaryDescription}>
-                    <div className={styles.brand}>Brand:  <span>Purina Friskies</span></div>
-                    <div className={styles.ratings}>20 Ratings</div>
-                    <div className={styles.price}>৳ 300.00</div>
+                    <div className={styles.brand}>Brand:  <span>{product.brand}</span></div>
+                    <div className={styles.ratings}>{product.rating} Ratings</div>
+                    <div className={styles.price}>৳ {product.price}</div>
                     <div className={styles.vat}>All prices include VAT.</div>
-                    <div className={styles.weight}>Weight: 8kg</div>
+                    <div className={styles.weight}>Weight: {product.weight}kg</div>
                     <ul className={styles.about}>
                         <h3 >About this product</h3>
                         <li>Firm stools thanks to a healthy digestion</li>
@@ -65,29 +89,10 @@ const ProDetails = () => {
                         <div className={styles.type}>Pet Type</div>
                         <div className={styles.info}>Dog</div>
                     </div>
-
-
-
-
                 </div>
             </div>
             {/* customer review */}
-            <div className={styles.customer}>
-                <h3 className={styles.headln}>Customer Review</h3>
-                <Review Name="Abid Al Hasan" headline="This Product is incredible. My dog loves it."
-                    message="I bought this food because it has a lower fat content and because the pieces are larger and makes my Cocker Spaniel and Boxer chew rather than swallow. I am very happy with this dog food because they both lost weight. The kibble is larger in shape and less dense. I am thrilled with it.
-                "></Review>
-                <Review Name="Abid Al Hasan" headline="This Product is incredible. My dog loves it."
-                    message="I bought this food because it has a lower fat content and because the pieces are larger and makes my Cocker Spaniel and Boxer chew rather than swallow. I am very happy with this dog food because they both lost weight. The kibble is larger in shape and less dense. I am thrilled with it.
-                "></Review>
-                <Review Name="Abid Al Hasan" headline="This Product is incredible. My dog loves it."
-                    message="I bought this food because it has a lower fat content and because the pieces are larger and makes my Cocker Spaniel and Boxer chew rather than swallow. I am very happy with this dog food because they both lost weight. The kibble is larger in shape and less dense. I am thrilled with it.
-                "></Review>
-                <div className={styles2.cmnt}>
-                    <h3>View All Comments</h3>
-                    <h3>Write Review</h3>
-                </div>
-            </div>
+            <ReviewContainer />
         </div>
     );
 };

@@ -14,6 +14,7 @@
 
  .picDes {
      display: flex;
+     margin-top: 12px;
      justify-content: center;
      align-items: center;
      flex-direction: column;
@@ -24,8 +25,10 @@
  }
 
  .picDes>img {
-     height: 450px;
-     width: 70%;
+     height: 500px;
+     box-shadow: 1px 1px 4px gray;
+     width: 90%;
+     text-align: center;
      margin: 0px;
      padding: 0px;
 
@@ -38,6 +41,7 @@
  }
 
  .morepic>img {
+     cursor: pointer;
      height: 80px;
      width: 80px;
      margin: 0 20px;

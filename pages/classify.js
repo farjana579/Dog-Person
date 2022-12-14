@@ -1,17 +1,27 @@
 import { useState } from 'react';
 import style from '../styles/classify.module.css'
-import * as tf from '@tensorflow/tfjs'
-import { mod } from '@tensorflow/tfjs';
+// import * as tf from '@tensorflow/tfjs'
 const Classify = () => {
     const [puppy, setPuppy] = useState(null)
     const handleImageUpload = (e) => {
-        setPuppy(URL.createObjectURL(e.target.files[0]))
+        if (e.target.files[0]) {
+            setPuppy(URL.createObjectURL(e.target.files[0]))
+        }
+        else {
+            setPuppy(null)
+        }
     }
     async function runmodel() {
-        const model = await tf.loadLayersModel('https://raw.githubusercontent.com/farjana579/Dog-Person-Frontend/main/models/model.json')
-        // console.log(model);
-        // const pred = model.predict(puppy)
-        // console.log(pred);
+        // let image = new Image(150, 150)
+        // image.src = puppy;
+        // let tfTensor = tf.browser.fromPixels(image);
+        // tfTensor = tfTensor.div(255.0);
+        // tfTensor = tfTensor.expandDims(0);
+        // tfTensor = tfTensor.cast("float32");
+
+        // const model = await tf.loadLayersModel('https://raw.githubusercontent.com/farjana579/Dog-Person-Frontend/main/models/model.json')
+        // const pred = model.predict(tfTensor).arraySync()[0];
+        // let res = pred.squeeze();
     }
     const handlePredict = () => {
         runmodel();
@@ -37,10 +47,9 @@ const Classify = () => {
                         <button className={style.classifyButton}>Upload an Image</button>
                         <input type="file" src="" alt="image input" className={style.imageInput} accept="image/*" onChange={handleImageUpload} />
                     </div>
-                    <div style={{ marginBottom: '10px' }}>OR</div>
-                    <button className={style.classifyButton}>Capture an Image</button>
-
-                    <button className={style.predictButton} onClick={handlePredict}>Predict</button>
+                    {
+                        puppy && <button className={style.predictButton} onClick={handlePredict}>Predict</button>
+                    }
                 </div>
             </div>
         </div>

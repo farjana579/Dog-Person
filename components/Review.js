@@ -7,7 +7,6 @@ const Review = ({ Name, headline, message }) => {
             {/* <div>{props.rating}</div> */}
             <div className={styles.hl}>{headline}</div>
             <div className={styles.msg}>{message}</div>
-
         </div>
     );
 };

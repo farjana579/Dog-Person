@@ -22,7 +22,7 @@ const RegistrationComponent = () => {
             <i>Forget password?</i>
           </a>
           <button className={styles.btnStyle}>LOG IN</button>
-          <a href="/registerpage">
+          <a href="/registration">
             New at Dog Person?. Please create a new account
           </a>
         </form>

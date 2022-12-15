@@ -1,6 +1,4 @@
-import React from 'react';
 import PlaceOrderHome from '../components/placeOrder/placeOrderHome';
-
 
 const PlaceOrderIndex = () => {
     return (

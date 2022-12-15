@@ -162,11 +162,11 @@
     list-style-type: none;
     background-color: rgba(0, 123, 230, 0.555);
     border-radius: 5px;
-    margin-top: 9px;
+    margin-top: -19px;
     position: absolute;
     padding: 0;
-    left: 110%;
-
+    left: 105%;
+    width: max-content;
     display: none;
 
 }
@@ -185,10 +185,11 @@
     list-style-type: none;
     background-color: rgba(0, 123, 230, 0.555);
     border-radius: 5px;
-    margin-top: 9px;
+    margin-top: 19px;
+    width: max-content;
     position: absolute;
     padding: 0;
-    left: 110%;
+    left: 105%;
     top: 20px;
     display: none;
 }

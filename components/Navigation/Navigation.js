@@ -43,7 +43,7 @@ const Navigation = () => {
                     <a href="/shop?type=food&sub-type=Raw">Raw</a>
                   </li>
                   <li>
-                    <a href="/shop?type=food&sub-type=Semi-Moist">Semi-Moist</a>
+                    <a href="/shop?type=food&sub-type=Semi-Moist">Semi Moist</a>
                   </li>
                   <li>
                     <a href="/shop?type=food&sub-type=Home-Made">Home Made</a>

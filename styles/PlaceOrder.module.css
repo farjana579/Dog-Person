@@ -1,0 +1,108 @@
+.firstDiv {
+    box-sizing: border-box;
+
+    position: absolute;
+    width: 996px;
+    height: 191px;
+    left: 15px;
+    top: 163px;
+    padding-left: 20px;
+
+    background: #FFFFFF;
+    border: 1px solid #000000;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 13px;
+}
+
+.selectList>select {
+
+
+    height: 30px;
+    left: 104px;
+    top: 289px;
+    padding-left: 5px;
+    padding-right: 5px;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 300;
+    font-size: 20px;
+    line-height: 30px;
+    color: rgba(0, 0, 0, 0.7);
+
+}
+
+.parent {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.SecondDiv {
+    box-sizing: border-box;
+    position: absolute;
+    width: 996px;
+    height: 760px;
+    left: 15px;
+    top: 399px;
+    background: white;
+    border: 1px solid #000000;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 13px;
+    padding-left: 30px;
+    padding-top: 30px;
+
+}
+
+.innerDiv {
+    box-sizing: border-box;
+
+    padding-left: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    width: 934px;
+    height: 200px;
+
+    background: #FFFFFF;
+    border: 1px solid #000000;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 8px;
+    margin-bottom: 20px;
+
+}
+
+.innerDivparent {
+    display: flex;
+    position: absolute;
+
+}
+
+.innerDivWrite {
+    padding-left: 20px;
+}
+
+.SideDiv {
+    box-sizing: border-box;
+    position: absolute;
+    width: 377px;
+    height: 410px;
+    left: 1038px;
+    top: 170px;
+    background: #FFFFFF;
+    border: 1px solid #000000;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.orderbtn {
+
+    padding: 10px 24px;
+    gap: 8px;
+    width: 130px;
+    height: 44px;
+    color: #FFFFFF;
+    font-size: 12px;
+    background: #E76F51;
+    border-radius: 5px;
+}

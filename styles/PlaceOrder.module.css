@@ -1,3 +1,4 @@
+/* container of left and right column */
 .parentDiv {
     display: flex;
     align-items: flex-start;
@@ -5,10 +6,12 @@
     margin-top: 20px;
 }
 
+/* defining width of left column. */
 .leftItems {
     width: 65%;
 }
 
+/* address container. */
 .addressDiv {
     box-sizing: border-box;
     box-shadow: 1px 1px 5px 4px rgba(0, 0, 0, 0.25);
@@ -17,6 +20,7 @@
     margin-bottom: 12px;
 }
 
+/* select tag. */
 .selectList>select {
     height: 40px;
     padding-left: 5px;
@@ -27,15 +31,13 @@
     border-radius: 12px;
 }
 
-.selectList>select:focus {
-    border: 1px solid rgb(46, 30, 192);
-}
-
+/* zitu jane. */
 .parent {
     display: flex;
     justify-content: space-evenly;
 }
 
+/* shoped item container. */
 .cartContainer {
     box-sizing: border-box;
     box-shadow: 1px 1px 5px 4px rgba(0, 0, 0, 0.25);
@@ -45,7 +47,7 @@
     margin-top: 20px;
 }
 
-
+/* single shop item. */
 .innerDivparent {
     box-sizing: border-box;
     position: relative;
@@ -56,6 +58,7 @@
     display: flex;
 }
 
+/* cancel button. */
 .innerDivparent .cancel {
     position: absolute;
     top: 10px;
@@ -68,15 +71,18 @@
     padding: 5px 8px;
 }
 
+/* changin design when clicked. */
 .innerDivparent .cancel:active {
     box-shadow: 0px 1px 0px 0px rgb(230, 225, 225);
 
 }
 
+/* details of product. */
 .innerDivWrite {
     margin-left: 20px;
 }
 
+/* title of the product. */
 .innerDivWrite h3 {
     margin: 0;
     padding: 0;
@@ -84,6 +90,7 @@
     margin-top: 9px;
 }
 
+/* product image. */
 .innerDivparent img {
     margin: 5px;
     border-radius: 8px;
@@ -97,6 +104,7 @@
     text-overflow: ellipsis;
 }
 
+/* right column */
 .SideDiv {
     box-sizing: border-box;
     padding: 12px 25px 12px 12px;
@@ -119,6 +127,7 @@
     font-weight: 400;
 }
 
+/* place order button */
 .orderbtn {
     padding: 10px 24px;
     color: #FFFFFF;

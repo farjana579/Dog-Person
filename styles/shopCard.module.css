@@ -1,3 +1,4 @@
+/* Full card */
 .bestCard {
     display: flex;
     flex-direction: column;
@@ -7,10 +8,11 @@
     box-shadow: 1px 1px 4px 4px rgb(216, 216, 216);
     border-radius: 9px;
     padding: 9px 7px;
+    /* hiding image overflow when hovered. */
     overflow: hidden;
 }
 
-
+/* Image of the card. */
 .bestCard img {
     border-top-right-radius: 9px;
     border-top-left-radius: 9px;
@@ -19,10 +21,12 @@
     transition: transform 0.5s;
 }
 
+/* changing size of the image when hovered. */
 .bestCard:hover img {
     transform: scale(1.1);
 }
 
+/* heading(name) of the card. */
 .bestCard h3 {
     font-size: 19px;
     margin: 0;
@@ -36,11 +40,13 @@
     padding: 0;
 }
 
+/* price */
 .price {
     font-size: 22px;
     font-weight: 600;
 }
 
+/* description  */
 .paragraph {
     margin: 9px 0;
     overflow-y: hidden;

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import styles from '../styles/productDetails.module.css'
+import styles from '../../styles/productDetails.module.css'
 import ReviewContainer from './ReviewContainer';
+import WriteReview from './WriteReview';
 
 const ProDetails = () => {
     const [current, setCurrent] = useState(0)
@@ -93,6 +94,7 @@ const ProDetails = () => {
             </div>
             {/* customer review */}
             <ReviewContainer />
+            <WriteReview />
         </div>
     );
 };

@@ -46,6 +46,7 @@ async function server() {
         app.get('/users/:email', async (req, res) => {
             const { email } = req.params;
             const result = await users.findOne({ email: email })
+            console.log(result);
             res.json(result._id ? false : true);
         })
         app.post('/users', async (req, res) => {

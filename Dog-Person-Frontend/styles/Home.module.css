@@ -1,0 +1,204 @@
+.NavLogo {
+    display: flex;
+    align-items: center;
+    color: white;
+    background-color: #264653;
+    justify-content: space-between;
+}
+
+.logoTitle {
+    display: flex;
+    align-items: center;
+}
+
+.logo img {
+    width: 50px;
+    height: 50px;
+    margin-left: 50px;
+    margin-right: 10px;
+}
+
+.Navbar {
+    margin-right: 90px;
+}
+
+.Navbar li {
+    cursor: pointer;
+}
+
+.Navbar>ul {
+    list-style: none;
+    display: flex;
+}
+
+.Navbar>ul>li {
+    padding: 9px 15px;
+    margin-left: 20px;
+}
+
+.banner {
+    display: flex;
+    justify-content: space-between;
+    background-color: #264653;
+    padding: 0;
+    margin: 0;
+    color: white;
+    min-height: 70vh;
+
+}
+
+.text {
+    width: 500px;
+    margin-left: 90px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    margin-bottom: 50px;
+    user-select: none;
+}
+
+.text h1 {
+    font-size: 2.4em;
+    margin: 0;
+}
+
+.dogImage {
+
+    margin-right: 150px;
+    display: flex;
+    align-items: flex-end;
+}
+
+.dogImage img {
+    height: 480px;
+}
+
+.btnStyle,
+.loginbtn {
+    padding: 9px 12px;
+    border: 0;
+    color: white;
+    font-size: 20px;
+    border-radius: 7px;
+    background-color: #E76F51;
+    transition: background-color .4s ease-in;
+}
+
+.btnStyle:hover {
+    background-color: #f14f27;
+}
+
+.loginbtn {
+    margin-left: 20px;
+}
+
+.nav_items {
+    margin-right: 90px;
+    user-select: none;
+}
+
+.nav_items>ul {
+    list-style: none;
+    display: flex;
+}
+
+.nav_items>ul>li {
+    padding: 9px 15px;
+    margin-left: 20px;
+}
+
+.shopNav {
+    position: relative;
+    display: block;
+
+}
+
+.ProductType {
+    list-style-type: none;
+    background-color: rgba(0, 123, 230, 0.555);
+    border-radius: 5px;
+    margin-top: 9px;
+    position: absolute;
+    padding: 0;
+    transition: opacity .9s ease-in;
+    display: none;
+
+
+}
+
+
+.ProductType>li {
+    border-bottom: 2px solid;
+    padding: 5px 10px;
+
+}
+
+.loginbtn {
+    padding: 9px 12px;
+    border: 0;
+    color: white;
+    font-size: 20px;
+    border-radius: 7px;
+    background-color: #E76F51;
+    transition: background-color .4s ease-in;
+}
+
+.btnStyle:hover {
+    background-color: #f14f27;
+}
+
+.loginbtn {
+    margin-left: 20px;
+}
+
+
+.shopNav:hover .ProductType {
+    display: block;
+
+}
+
+.MedicineType {
+    list-style-type: none;
+    background-color: rgba(0, 123, 230, 0.555);
+    border-radius: 5px;
+    margin-top: -19px;
+    position: absolute;
+    padding: 0;
+    left: 105%;
+    width: max-content;
+    display: none;
+
+}
+
+.medi:hover .MedicineType {
+    display: block;
+
+}
+
+.MedicineType>li {
+    border-bottom: 2px solid;
+    padding: 5px 10px;
+}
+
+.FoodType {
+    list-style-type: none;
+    background-color: rgba(0, 123, 230, 0.555);
+    border-radius: 5px;
+    margin-top: 19px;
+    width: max-content;
+    position: absolute;
+    padding: 0;
+    left: 105%;
+    top: 20px;
+    display: none;
+}
+
+.food:hover .FoodType {
+    display: block;
+}
+
+.FoodType>li {
+    border-bottom: 2px solid;
+    padding: 5px 10px;
+}

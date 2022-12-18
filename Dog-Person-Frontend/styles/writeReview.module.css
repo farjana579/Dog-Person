@@ -1,0 +1,37 @@
+.write{
+    display: flex;
+    flex-direction: column;
+    
+}
+.write>div{
+    margin-top: 5px;
+   margin-bottom: 5px;
+}
+.title{
+    width: 400px;
+    height: 40px;
+}
+.reviewDes{
+resize: both;
+height: 70px;
+
+}
+.rating{
+    display: flex;
+}
+.YourRat{
+font-size: 15px;
+margin:0px 10px 0px 0px;
+}
+.submit{
+    background-color: coral;
+    color: #ffffff;
+    border:0px;
+    font-size: 18px;
+    border-radius: 12px;
+    padding: 10px 15px;
+}
+.submit:hover{
+    background-color: rgb(208, 109, 39);
+}
+

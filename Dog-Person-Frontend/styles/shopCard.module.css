@@ -75,3 +75,9 @@
 .btnStyle:active {
     box-shadow: 1px 1px 6px 2px rgb(212, 212, 212);
 }
+
+.auto_center {
+    align-items: center;
+    margin: 0 auto;
+
+}

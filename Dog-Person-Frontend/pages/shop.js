@@ -1,8 +1,21 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useRouter } from "next/router";
 import ShopCard from "../components/Shop/ShopCard";
 import styles from '../styles/shop.module.css'
+import axios from 'axios'
 const shop = () => {
-    const [products, setProducts] = useState([{}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {},])
+    const [products, setProducts] = useState([{}])
+    const [type, setType] = useState(-1)
+    const [sub, setSub] = useState(-1);
+    const router = useRouter();
+    useEffect(
+        () => {
+            if (router.query.type !== undefined && router.query.subtype !== undefined) {
+                axios.get(`http://localhost:4000/products?type=${router.query.type}&subtype=${router.query.subtype}`).then(res => {
+                    setProducts(res.data)
+                })
+            }
+        }, [router])
     return (
         <div>
             <h2 style={{ marginLeft: "30px" }}>Search Results</h2>
@@ -10,9 +23,9 @@ const shop = () => {
             <div className={styles.shopContainer}>
                 {
                     // Loop through all products and getting details of them.
-                    products.map(prodcut =>
+                    products.map(product =>
                         // Calling Card component and passing dynamic values.
-                        <ShopCard name={'Hp Victus Gaming Laptop 16-D0027Ne, 16.1" Fhd,11Th Gen. Intel® Core? I7 Processor,16GB RAM, 1Tb Ssd, 4GB Nvidia® Geforce® Rtx 3050 Ti, Windows 10, En-Ar Kb,Blue, 4A3F5Ea'} ratingcount={500} avgrating={4.5} image="https://m.media-amazon.com/images/I/7106suqEZ7L._AC_SX569_.jpg" price={1200} paragraph="Lorem, ipsum dolor sit amet consectetur adipisicing elit. Non in quo provident, " />
+                        <ShopCard name={product.name} ratingcount={product.rating} avgrating={product.avg_rating} image={product.picture} price={product.price} paragraph={product.about} id={product._id} />
                     )
                 }
             </div>

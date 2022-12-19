@@ -5,24 +5,7 @@ import WriteReview from './WriteReview';
 
 const ProDetails = () => {
     const [current, setCurrent] = useState(0)
-    const [product, setProduct] = useState({
-        picture: ["https://i.ibb.co/Mn8qSVx/image.png",
-            "https://i.ibb.co/L8srR5L/image.png",
-            "https://i.ibb.co/JrMS9Gg/image.png",
-            "https://i.ibb.co/DRrpQFy/image.png",
-            "https://i.ibb.co/xz7bLxt/image.png"
-        ],
-        price: 1106,
-        weight: 6,
-        rating: 572,
-        avg_rating: 2.9669,
-        brand: "Happy Dog",
-        type: "medicine",
-        name: "Mcbride Rocha",
-        email: "mcbriderocha@chillium.com",
-        about: "Ea cillum aliqua exercitation proident ipsum non et in eu aliquip nisi. Cillum duis quis proident laborum esse et dolore. Quis quis non excepteur incididunt aliqua enim. Eu magna fugiat cillum exercitation veniam officia deserunt proident excepteur.",
-        registered: "2016-12-12T02:03:48 -06:00"
-    })
+    const [product, setProduct] = useState({})
     const handleQuantity = (val) => {
         const doc = document.getElementById('quantity');
         if (parseInt(doc.value) === 0 && val === -1)

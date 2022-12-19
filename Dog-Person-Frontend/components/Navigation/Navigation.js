@@ -16,37 +16,37 @@ const Navigation = () => {
       <div className={styles.nav_items}>
         <ul >
           <li><a href="/">Home</a></li>
-          <li className={styles.shopNav}><a href="/shop">Shop</a>
+          <li className={styles.shopNav}><a href="/shop?type=&subtype=">Shop</a>
             <ul className={styles.ProductType}>
-              <li className={styles.medi}><a href="/shop?type=medicine">Medicine</a>
+              <li className={styles.medi}><a href="/shop?type=medicine&subtype=">Medicine</a>
                 <ul className={styles.MedicineType}>
-                  <li><a href="/shop?type=medicine&sub-type=Antibiotics">Antibiotics</a></li>
-                  <li><a href="/shop?type=medicine&sub-type=Antifungal">Antifungal</a></li>
-                  <li><a href="/shop?type=medicine&sub-type=Antiparasitic">Antiparasitic</a></li>
+                  <li><a href="/shop?type=medicine&subtype=Antibiotics">Antibiotics</a></li>
+                  <li><a href="/shop?type=medicine&subtype=Antifungal">Antifungal</a></li>
+                  <li><a href="/shop?type=medicine&subtype=Antiparasitic">Antiparasitic</a></li>
                   <li>
-                    <a href="/shop?type=medicine&sub-type=Antibiotics">Steriods</a>
+                    <a href="/shop?type=medicine&subtype=Antibiotics">Steriods</a>
                   </li>
                   <li>
-                    <a href="/shop?type=medicine&sub-type=Antibiotics">Pain Reliever</a>
+                    <a href="/shop?type=medicine&subtype=Antibiotics">Pain Reliever</a>
                   </li>
                 </ul>
               </li>
-              <li className={styles.food}><a href="/shop?type=food">Food</a>
+              <li className={styles.food}><a href="/shop?type=food&subtype=">Food</a>
                 <ul className={styles.FoodType}>
                   <li>
-                    <a href="/shop?type=food&sub-type=Kibble">Kibble</a>
+                    <a href="/shop?type=food&subtype=Kibble">Kibble</a>
                   </li>
                   <li>
-                    <a href="/shop?type=food&sub-type=Canned">Canned</a>
+                    <a href="/shop?type=food&subtype=Canned">Canned</a>
                   </li>
                   <li>
-                    <a href="/shop?type=food&sub-type=Raw">Raw</a>
+                    <a href="/shop?type=food&subtype=Raw">Raw</a>
                   </li>
                   <li>
-                    <a href="/shop?type=food&sub-type=Semi-Moist">Semi Moist</a>
+                    <a href="/shop?type=food&subtype=Semi-Moist">Semi Moist</a>
                   </li>
                   <li>
-                    <a href="/shop?type=food&sub-type=Home-Made">Home Made</a>
+                    <a href="/shop?type=food&subtype=Home-Made">Home Made</a>
                   </li>
                 </ul>
               </li>

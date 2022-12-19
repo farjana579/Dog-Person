@@ -1,36 +1,39 @@
-.footerMain{
+.footerMain {
     background-color: #0B0D17;
     display: flex;
     height: 220px;
     color: white;
-    justify-content:  space-around;
-     
-     
+    justify-content: space-around;
+
+
 }
-.footerFirst{
+
+.footerFirst {
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
     align-items: flex-start;
-    
+
 }
-.footerDownAndLicense{
+
+.footerDownAndLicense {
     display: flex;
     gap: 20px;
-    
+
 }
-.footerFeatures{
+
+.footerFeatures {
     display: flex;
     gap: 15px;
 }
 
-.appLink{
+.appLink {
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
 }
 
-.appleLink{
+.appleLink {
     display: flex;
     border: 1px solid white;
     height: 60px;
@@ -39,25 +42,26 @@
     align-items: center;
     gap: 12px;
     border-radius: 10px;
-    
-}
-   
- .appLogo img{
-width: 25px;
-height: 25px;
- }
 
- .appText h6{
+}
+
+.appLogo img {
+    width: 25px;
+    height: 25px;
+}
+
+.appText h6 {
     margin-bottom: 0;
-  
+
     user-select: none;
- }
- .appText h3{
+}
+
+.appText h3 {
     margin-top: 0;
     user-select: none;
- }
+}
 
- .playStoreLink{
+.playStoreLink {
     display: flex;
     border: 1px solid white;
     height: 60px;
@@ -66,17 +70,20 @@ height: 25px;
     align-items: center;
     gap: 12px;
     border-radius: 10px;
- }
-.playStoreLogo img{
+}
+
+.playStoreLogo img {
     padding-left: 5px;
     width: 25px;
     height: 25px;
 }
- .playStoreText h6{
+
+.playStoreText h6 {
     margin-bottom: 0;
     user-select: none;
- }
- .playStoreText h3{
+}
+
+.playStoreText h3 {
     margin-top: 0;
     user-select: none;
- }
+}

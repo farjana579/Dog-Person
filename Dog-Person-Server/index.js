@@ -22,7 +22,13 @@ async function server() {
         const users = database.collection('users');
 
         //crud
+        app.get('/products/:id', async (req, res) => {
+            const { id } = req.params
+            res.json('hi')
+        })
         app.get('/products', async (req, res) => {
+            const query = req.query;
+            // const cursor = productCollection.find(query);
             const cursor = productCollection.find({})
             const result = await cursor.toArray();
             res.json(result)

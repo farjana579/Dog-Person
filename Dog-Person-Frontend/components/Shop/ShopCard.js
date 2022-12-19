@@ -3,7 +3,8 @@ import { Rating } from '@mui/material';
 // stylesheet
 import styles from '../../styles/shopCard.module.css'
 // Shop card component.
-const ShopCard = ({ image, name, price, avgrating, ratingcount, paragraph }) => {
+const ShopCard = ({ image, name, price, avgrating, ratingcount, paragraph, id }) => {
+    console.log(id);
     return (
         <div>
             <div className={styles.bestCard}>
@@ -22,7 +23,9 @@ const ShopCard = ({ image, name, price, avgrating, ratingcount, paragraph }) => 
                 </div>
                 <div title={paragraph} className={styles.paragraph}>{paragraph}</div>
                 <div className={styles.price}>৳ {price ? price : 0}</div>
-                <button className={styles.btnStyle}>View</button>
+                <a href={`/products/${id}`} className={styles.auto_center}>
+                    <button className={styles.btnStyle}>View</button>
+                </a>
             </div>
         </div>
     );

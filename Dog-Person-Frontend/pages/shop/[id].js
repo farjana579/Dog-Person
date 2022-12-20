@@ -1,6 +1,5 @@
 import React from 'react';
-import ProDetails from '../components/singleProduct/ProDetails';
-
+import ProDetails from '../../components/singleProduct/ProDetails';
 const SingleProduct = () => {
     return (
         <div>

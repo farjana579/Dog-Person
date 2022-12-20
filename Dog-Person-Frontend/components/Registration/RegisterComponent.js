@@ -24,7 +24,7 @@ const RegisterComponent = () => {
       const name = input.name;
       const value = input.value;
       if (value === "") {
-        alert(name + 'is Empty')
+        alert(name + ' is Empty')
         return;
       }
       info[name] = value;

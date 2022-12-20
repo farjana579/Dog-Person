@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
-import ShopCard from "../components/Shop/ShopCard";
-import styles from '../styles/shop.module.css'
+import ShopCard from "../../components/Shop/ShopCard";
+import styles from '../../styles/shop.module.css'
 import axios from 'axios'
 const shop = () => {
     const [products, setProducts] = useState([{}])

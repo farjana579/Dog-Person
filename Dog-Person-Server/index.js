@@ -11,7 +11,7 @@ const port = 4000;
 const url = "mongodb+srv://WEBTOON:NTDNTDNTD@cluster0.wxtmufn.mongodb.net/?retryWrites=true&w=majority"
 const client = new MongoClient(url, { useNewUrlParser: true, useUnifiedTopology: true });
 
-const objectId = mongodb.ObjectId;
+const ObjectId = mongodb.ObjectId;
 
 async function server() {
     try {
@@ -24,7 +24,11 @@ async function server() {
         //crud
         app.get('/products/:id', async (req, res) => {
             const { id } = req.params
-            res.json('hi')
+            const filter = {
+                _id: ObjectId(id)
+            }
+            const result = await productCollection.findOne(filter);
+            res.json(result)
         })
         app.get('/products', async (req, res) => {
             const query = req.query;
@@ -36,8 +40,10 @@ async function server() {
         app.get('/reviews/:id', async (req, res) => {
             const id = req.params.id;
             const filter = {
-                productID: objectId(id)
+                productID: ObjectId(id)
             }
+            console.log(filter);
+            // res.json('i')
             const cursor = reviewCollection.find(filter);
             const result = await cursor.toArray();
             res.json(result)

@@ -1,75 +1,84 @@
 import React, { useState } from "react";
 import logo from "../../image/pawBlack.png";
-import axios from 'axios'
+import axios from "axios";
 import styles from "../../styles/registration.module.css";
 const RegisterComponent = () => {
   const [emailUsed, setEmailUsed] = useState(true);
 
   // checking if email available in database.
-  const handleEmailVerification = e => {
+  const handleEmailVerification = (e) => {
     const email = e.target.value;
-    axios.get(`http://localhost:4000/users/${email}`)
-      .then(res => {
-        setEmailUsed(res.data)
-        console.log(res);
-      })
-  }
+    axios.get(`http://localhost:4000/users/${email}`).then((res) => {
+      setEmailUsed(res.data);
+      console.log(res);
+    });
+  };
 
   // register user
-  const handleRegistration = e => {
+  const handleRegistration = (e) => {
     e.preventDefault();
-    const inputs = document.getElementsByTagName('input')
-    let info = {}
+    const inputs = document.getElementsByTagName("input");
+    let info = {};
+    // [a, b, c]
     for (const input of inputs) {
       const name = input.name;
       const value = input.value;
       if (value === "") {
-        alert(name + 'is Empty')
+        alert(name + "is Empty");
         return;
       }
       info[name] = value;
     }
     if (info.password !== info.confirmPassword) {
-      alert('Confimation password is not matched');
+      alert("Confirmation password is not matched");
       return;
     }
     if (!emailUsed) {
-      alert('Use another email');
+      alert("Use another email");
       return;
     }
-    const finalData = { email: info.email, name: info.name, password: info.password }
-    axios.post(`http://localhost:4000/users`, finalData).then(res => {
-
-    })
-
-  }
+    const finalData = {
+      email: info.email,
+      name: info.name,
+      password: info.password,
+    };
+    axios.post(`http://localhost:4000/users`, finalData).then((res) => {});
+  };
   return (
     <div>
       <div className={styles.registrationHeader}>
         <img src={logo.src}></img>
         <h1>Dog Person</h1>
       </div>
+      
       <div className={styles.registrationBox}>
+        
         <form onSubmit={handleRegistration}>
           <input type="text" id="fname" name="name" placeholder="Name"></input>
-          <input type="text" id="Email" name="email" placeholder="Email" onBlur={handleEmailVerification} />
-
+          <input
+            type="text"
+            id="Email"
+            name="email"
+            placeholder="Email"
+            onBlur={handleEmailVerification}
+          />
           <input
             type="password"
             id="password"
             name="password"
             placeholder="Password"
           />
+          
           <input
             type="password"
             id="password"
             name="confirmPassword"
             placeholder="Retype Password"
           />
-          <button onClick={handleRegistration} className={styles.btnStyle}>Register</button>
-          <a href="/login">
-            Already have an account?. go to login page.
-          </a>
+          <button onClick={handleRegistration} className={styles.btnStyle}>
+            Register
+          </button>
+          <a href="/login">Already have an account?. go to login page.</a>
         </form>
       </div>
     </div>

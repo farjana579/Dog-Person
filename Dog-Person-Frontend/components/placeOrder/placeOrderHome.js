@@ -41,7 +41,7 @@ const PlaceOrderHome = () => {
                     {
                         // looping through shoped item/demo data.
                         cartProduct.map(product =>
-                            // single shoped item.
+                            // single shopped item.
                             <div className={PlaceOrderStyle.innerDivparent}>
                                 {/* Cancel button */}
                                 <button className={PlaceOrderStyle.cancel} onClick={() => handleRemoveItem(product._id)}>X</button>
@@ -66,7 +66,7 @@ const PlaceOrderHome = () => {
                 </div>
             </div>
             <div className={PlaceOrderStyle.SideDiv}  >
-                <h2>Order Summery</h2>
+                <h2>Order Summary</h2>
                 <div className={PlaceOrderStyle.SideDivWrite} >
                     <div>Total Price  : <span>Purnima Friskies</span> </div>
                     <div>Item Total : <span>5</span> </div>

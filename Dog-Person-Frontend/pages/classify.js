@@ -12,16 +12,16 @@ const Classify = () => {
         }
     }
     async function runmodel() {
-        // let image = new Image(150, 150)
-        // image.src = puppy;
-        // let tfTensor = tf.browser.fromPixels(image);
-        // tfTensor = tfTensor.div(255.0);
-        // tfTensor = tfTensor.expandDims(0);
-        // tfTensor = tfTensor.cast("float32");
+        let image = new Image(150, 150)
+        image.src = puppy;
+        let tfTensor = tf.browser.fromPixels(image);
+        tfTensor = tfTensor.div(255.0);
+        tfTensor = tfTensor.expandDims(0);
+        tfTensor = tfTensor.cast("float32");
 
-        // const model = await tf.loadLayersModel('https://raw.githubusercontent.com/farjana579/Dog-Person-Frontend/main/models/model.json')
-        // const pred = model.predict(tfTensor).arraySync()[0];
-        // let res = pred.squeeze();
+        const model = await tf.loadLayersModel('https://raw.githubusercontent.com/farjana579/Dog-Person-Frontend/main/models/model.json')
+        const pred = model.predict(tfTensor).arraySync()[0];
+        let res = pred.squeeze();
     }
     const handlePredict = () => {
         runmodel();
@@ -31,7 +31,7 @@ const Classify = () => {
 
             <div className={style.imageContainer}>
                 {
-                    puppy &&
+                   puppy &&
                     <img src={puppy} alt="Puppy" />
                 }
             </div>

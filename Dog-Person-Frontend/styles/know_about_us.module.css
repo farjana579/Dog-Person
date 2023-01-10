@@ -1,0 +1,9 @@
+.videoSection{
+    margin-top: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.videoSection h1{
+    font-size: 2.4em;
+}

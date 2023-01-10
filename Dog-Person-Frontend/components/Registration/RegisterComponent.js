@@ -4,7 +4,19 @@ import axios from "axios";
 import styles from "../../styles/registration.module.css";
 const RegisterComponent = () => {
   const [emailUsed, setEmailUsed] = useState(true);
-
+  
+  //checking if user name available in database
+  const handleUserName = (e) => {
+    const userName = e.target.value;
+    axios.get(`http://localhost:4000/users?name=${userName}`)
+    .then(res => {
+      if (res.data) {
+        alert("Available");
+      } else {
+        alert("not available");
+      }
+    });
+  };
   // checking if email available in database.
   const handleEmailVerification = (e) => {
     const email = e.target.value;
@@ -19,12 +31,12 @@ const RegisterComponent = () => {
     e.preventDefault();
     const inputs = document.getElementsByTagName("input");
     let info = {};
-    // [a, b, c]
+
     for (const input of inputs) {
       const name = input.name;
       const value = input.value;
       if (value === "") {
-        alert(name + ' is Empty')
+        alert(name + " is Empty");
         return;
       }
       info[name] = value;
@@ -40,6 +52,7 @@ const RegisterComponent = () => {
     const finalData = {
       email: info.email,
       name: info.name,
+      dob: info.DOB,
       password: info.password,
     };
     axios.post(`http://localhost:4000/users`, finalData).then((res) => {});
@@ -50,11 +63,16 @@ const RegisterComponent = () => {
         <img src={logo.src}></img>
         <h1>Dog Person</h1>
       </div>
-      
+
       <div className={styles.registrationBox}>
-        
         <form onSubmit={handleRegistration}>
-          <input type="text" id="fname" name="name" placeholder="Name"></input>
+          <input
+            type="text"
+            id="fname"
+            name="name"
+            placeholder="Name"
+            onBlur={handleUserName}
+          ></input>
           <input
             type="text"
             id="Email"
@@ -62,13 +80,14 @@ const RegisterComponent = () => {
             placeholder="Email"
             onBlur={handleEmailVerification}
           />
+          <input type="date" name="DOB" placeholder="Date of Birth" />
           <input
             type="password"
             id="password"
             name="password"
             placeholder="Password"
           />
-          
+
           <input
             type="password"
             id="password"

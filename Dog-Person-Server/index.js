@@ -65,6 +65,16 @@ async function server() {
             console.log(result);
             res.json(result._id ? false : true);
         })
+        app.get('/users', async(req,res)=>{
+          const name = req.query.userName
+          console.log(req.query)
+          const filter = {
+            name:name
+          }
+          
+          const result = users.findOne(filter);
+          res.json(result == null?true: false)
+        })
         app.post('/users', async (req, res) => {
             const data = req.body;
             const result = await users.insertOne(data)

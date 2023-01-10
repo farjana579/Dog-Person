@@ -62,18 +62,13 @@ async function server() {
         app.get('/users/:email', async (req, res) => {
             const {email} = req.params;
             const result = await users.findOne({ email: email })
-            console.log(result);
-            res.json(result._id ? false : true);
+            res.json(result===null ? false : true);
         })
         app.get('/users', async(req,res)=>{
-          const name = req.query.userName
-          console.log(req.query)
-          const filter = {
-            name:name
-          }
-          
-          const result = users.findOne(filter);
-          res.json(result == null?true: false)
+          const name = req.query.name
+          const filter = {name}
+          const result = await users.findOne(filter);
+          res.json(result === null ? false : true);
         })
         app.post('/users', async (req, res) => {
             const data = req.body;

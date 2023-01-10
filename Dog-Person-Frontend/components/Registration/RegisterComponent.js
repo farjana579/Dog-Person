@@ -4,17 +4,13 @@ import axios from "axios";
 import styles from "../../styles/registration.module.css";
 const RegisterComponent = () => {
   const [emailUsed, setEmailUsed] = useState(true);
-  
+  const [userNameUsed, setUserNameUsed] = useState(true);
   //checking if user name available in database
   const handleUserName = (e) => {
     const userName = e.target.value;
     axios.get(`http://localhost:4000/users?name=${userName}`)
     .then(res => {
-      if (res.data) {
-        alert("Available");
-      } else {
-        alert("not available");
-      }
+      setUserNameUsed(res.data)
     });
   };
   // checking if email available in database.
@@ -22,7 +18,6 @@ const RegisterComponent = () => {
     const email = e.target.value;
     axios.get(`http://localhost:4000/users/${email}`).then((res) => {
       setEmailUsed(res.data);
-      console.log(res);
     });
   };
 
@@ -45,8 +40,12 @@ const RegisterComponent = () => {
       alert("Confirmation password is not matched");
       return;
     }
-    if (!emailUsed) {
+    if (emailUsed) {
       alert("Use another email");
+      return;
+    }
+    if(userNameUsed){
+      alert("Use another name");
       return;
     }
     const finalData = {
@@ -55,7 +54,11 @@ const RegisterComponent = () => {
       dob: info.DOB,
       password: info.password,
     };
-    axios.post(`http://localhost:4000/users`, finalData).then((res) => {});
+    axios.post(`http://localhost:4000/users`, finalData).then((res) => {
+      if(res.data.insertedId){
+        alert("successful")
+      }
+    });
   };
   return (
     <div>

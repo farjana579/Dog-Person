@@ -1,26 +1,31 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Review from '../singleProduct/Review'
 import styles from '../../styles/review.module.css'
-import { Rating } from '@mui/material'
-const ReviewContainer = () => {
+import axios from 'axios';
+const ReviewContainer = ({ id }) => {
+    const [reviews, setReviews] = useState([]);
+    useEffect(() => {
+        if (id !== undefined) {
+            axios.get(`http://localhost:4000/reviews/${id}`).then(res => {
+                setReviews(res.data);
+            })
+        }
+    }, [id])
     return (
         <div className={styles.customer}>
             <h3 className={styles.headln}>Customer Review</h3>
-            <Review Name="Abid Al Hasan" headline="This Product is incredible. My dog loves it."
-                message="I bought this food because it has a lower fat content and because the pieces are larger and makes my Cocker Spaniel and Boxer chew rather than swallow. I am very happy with this dog food because they both lost weight. The kibble is larger in shape and less dense. I am thrilled with it.
-                " rating="3" like="like"></Review>
-            <Review Name="Abid Al Hasan" headline="This Product is incredible. My dog loves it."
-                message="I bought this food because it has a lower fat content and because the pieces are larger and makes my Cocker Spaniel and Boxer chew rather than swallow. I am very happy with this dog food because they both lost weight. The kibble is larger in shape and less dense. I am thrilled with it.
-                " rating="4"
-                ></Review>
-            <Review Name="Abid Al Hasan" headline="This Product is incredible. My dog loves it."
-                message="I bought this food because it has a lower fat content and because the pieces are larger and makes my Cocker Spaniel and Boxer chew rather than swallow. I am very happy with this dog food because they both lost weight. The kibble is larger in shape and less dense. I am thrilled with it.
-                " rating="2"></Review>
+            {
+                reviews.map(review =>
+                    <Review Name={review.user_name} headline={review.title}
+                        message={review.description} rating={review.rating} like={review.like} dislike={review.dislike} />
+
+                )
+            }
             <div className={styles.cmnt}>
                 <h3>View All Comments</h3>
-                <h3>Add a Review</h3>           
-        </div>
-        
+                <h3>Add a Review</h3>
+            </div>
+
         </div>
     );
 };

@@ -15,7 +15,7 @@ const client = new MongoClient(url, {
   useUnifiedTopology: true,
 });
 
-const objectId = mongodb.ObjectId;
+const ObjectId = mongodb.ObjectId;
 
 async function server() {
     try {
@@ -28,7 +28,11 @@ async function server() {
         //crud
         app.get('/products/:id', async (req, res) => {
             const { id } = req.params
-            res.json('hi')
+            const filter = {
+                _id: ObjectId(id)
+            }
+            const result = await productCollection.findOne(filter);
+            res.json(result)
         })
         app.get('/products', async (req, res) => {
             const query = req.query;
@@ -37,19 +41,16 @@ async function server() {
             const result = await cursor.toArray();
             res.json(result)
         })
-        // app.get('/reviews/:id', async (req, res) => {
-        //     const id = req.params.id;
-        //     const filter = {
-        //         productID: objectId(id)
-        //     }
-        //     const cursor = reviewCollection.find(filter);
-        //     const result = await cursor.toArray();
-        //     res.json(result)
-        // })
-        app.get('/review',async(req,res)=>{
-          const cursor = reviewCollection.find({})
-          const result = await cursor.toArray()
-          res.json(result)
+        app.get('/reviews/:id', async (req, res) => {
+            const id = req.params.id;
+            const filter = {
+                productID: ObjectId(id)
+            }
+            console.log(filter);
+            // res.json('i')
+            const cursor = reviewCollection.find(filter);
+            const result = await cursor.toArray();
+            res.json(result)
         })
         app.get('/login', async (req, res) => {
             const { email, password } = req.query;

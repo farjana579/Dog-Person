@@ -23,7 +23,7 @@ const ShopCard = ({ image, name, price, avgrating, ratingcount, paragraph, id })
                 </div>
                 <div title={paragraph} className={styles.paragraph}>{paragraph}</div>
                 <div className={styles.price}>৳ {price ? price : 0}</div>
-                <a href={`/products/${id}`} className={styles.auto_center}>
+                <a href={`/shop/${id}`} className={styles.auto_center}>
                     <button className={styles.btnStyle}>View</button>
                 </a>
             </div>

@@ -78,35 +78,18 @@ async function server() {
     app.get('/users/:email', async (req, res) => {
       const { email } = req.params;
       const result = await users.findOne({ email: email })
-      console.log(result);
-      res.json(result._id ? false : true);
+      res.json(result === null ? false : true);
+    })
+    app.get('/users', async (req, res) => {
+      const name = req.query.name
+      const filter = { name }
+      const result = await users.findOne(filter);
+      res.json(result === null ? false : true);
     })
     app.post('/users', async (req, res) => {
       const data = req.body;
       const result = await users.insertOne(data)
       res.json(result)
-    })
-    app.get('/order-details/:userid', async (req, res) => {
-      const { userid } = req.params;
-      const filter = {
-        buyerID: userid
-      }
-      const cursor = orderListCollection.find(filter)
-      const result = await cursor.toArray();
-      res.json(result)
-    })
-    app.delete('/order-details/:orderid', async (req, res) => {
-      const { orderid } = req.params;
-      const filt = {
-        _id: ObjectId(orderid)
-      }
-      const result = await orderListCollection.deleteOne(filt);
-      res.json(result)
-    })
-    app.post('/order-details', async (req, res) => {
-      const productInfo = req.body;
-      const result = await orderListCollection.insertOne(productInfo);
-      res.json(result.insertedId)
     })
   }
   finally {

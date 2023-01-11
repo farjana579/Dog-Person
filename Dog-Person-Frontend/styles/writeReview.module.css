@@ -1,37 +1,38 @@
-.write{
-    display: flex;
-    flex-direction: column;
-    
+.title {
+    margin-top: 20px;
+    width: 55%;
+    padding: 9px 13px;
+    font-size: 19px;
+    font-weight: 600;
+    margin-bottom: 16px;
 }
-.write>div{
-    margin-top: 5px;
-   margin-bottom: 5px;
-}
-.title{
-    width: 400px;
-    height: 40px;
-}
-.reviewDes{
-resize: both;
-height: 70px;
 
+.reviewDes {
+    min-width: 55%;
+    min-height: 200px;
+    padding: 9px 13px;
+    font-size: 16px;
+    margin-top: 16px;
 }
-.rating{
+
+.rating {
     display: flex;
 }
-.YourRat{
-font-size: 15px;
-margin:0px 10px 0px 0px;
+
+.YourRat {
+    font-size: 15px;
+    margin: 0px 10px 0px 0px;
 }
-.submit{
+
+.submit {
     background-color: coral;
     color: #ffffff;
-    border:0px;
+    border: 0px;
     font-size: 18px;
     border-radius: 12px;
     padding: 10px 15px;
 }
-.submit:hover{
+
+.submit:hover {
     background-color: rgb(208, 109, 39);
 }
-

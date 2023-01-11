@@ -4,8 +4,6 @@ import { useRouter } from 'next/router';
 import React, { useEffect, useState } from 'react';
 import styles from '../../styles/productDetails.module.css'
 import ReviewContainer from './ReviewContainer';
-import WriteReview from './WriteReview';
-
 const ProDetails = () => {
     // product holds the details of the product. initial value is a empty object.
     const [product, setProduct] = useState({
@@ -21,7 +19,9 @@ const ProDetails = () => {
     })
     // getting id of the product from the url.
     const [id, setId] = useState();
+    const [userInfo, setUserInfo] = useState("639ead7d0802db84b4ac4eb9")
     const router = useRouter()
+    console.log(router);
     useEffect(() => {
         if (router.query.id !== undefined) {
             setId(router.query.id)
@@ -32,11 +32,28 @@ const ProDetails = () => {
     }, [router])
     // current is the state variable to hold to display image. initial value is 0 
     const [current, setCurrent] = useState(0)
-
+    const handleAddToCart = e => {
+        const doc = document.getElementById('quantity');
+        const productInfo = {
+            productID: id,
+            productName: product.name,
+            productBrand: product.brand,
+            price: product.price,
+            quantity: parseInt(doc.value),
+            buyerID: userInfo
+        }
+        // console.log(productInfo);
+        axios.post(`http://localhost:4000/order-details`, productInfo)
+            .then(res => {
+                if (res.data) {
+                    router.push("/PlaceOrderIndex")
+                }
+            })
+    }
     // this function handles the change of quantity. 
     const handleQuantity = (val) => {
         const doc = document.getElementById('quantity');
-        if (parseInt(doc.value) === 0 && val === -1)
+        if (parseInt(doc.value) === 1 && val === -1)
             return;
         doc.value = parseInt(doc.value) + val;
     }
@@ -76,10 +93,10 @@ const ProDetails = () => {
                     <div className={styles.quantity}>
                         <span>Quantity</span>
                         <div onClick={() => handleQuantity(-1)}>-</div>
-                        <input type="number" min={0} defaultValue="0" id="quantity" />
+                        <input type="number" min={0} defaultValue="1" id="quantity" />
                         <div onClick={() => handleQuantity(+1)}>+</div>
                     </div>
-                    <button id={styles.mbtn}>ADD TO CART</button>
+                    <button id={styles.mbtn} onClick={handleAddToCart}>ADD TO CART</button>
                 </div>
             </div>
             {/* product information */}
@@ -106,7 +123,6 @@ const ProDetails = () => {
             </div>
             {/* customer review */}
             <ReviewContainer id={id} />
-            <WriteReview />
         </div>
     );
 };

@@ -23,7 +23,7 @@ const Footer = () => {
             <a>Help</a>
             <a>Privacy Policy</a>
           </div>
-          <a> © 2020 bike.All right reserved</a>
+          <a> &copy;2023 Dog Person. All right reserved</a>
         </div>
 
         <div className={styles.appLink}>

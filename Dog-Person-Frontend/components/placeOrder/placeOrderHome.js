@@ -1,33 +1,17 @@
-import { useState } from 'react';
+import axios from 'axios';
+import { useEffect, useState } from 'react';
 import PlaceOrderStyle from '../../styles/PlaceOrder.module.css'
 import CustomerAddress from './CustomerAddress';
 const PlaceOrderHome = () => {
     // Using demo data.
-    const [cartProduct, setCartProduct] = useState([
-        {
-            _id: 'aksdjflas',
-            picture: ["https://i.ibb.co/Mn8qSVx/image.png"
-            ],
-            price: 1106,
-            quantity: 2,
-            weight: 6,
-            brand: "Happy Dog",
-            name: "Mcbride Rocha",
-        }, {
-            _id: 'askldfj',
-            picture: ["https://i.ibb.co/Mn8qSVx/image.png"
-            ],
-            quantity: 4,
-            price: 1106,
-            weight: 6,
-            brand: "Happy Dog",
-            name: "Mcbride Rocha",
-        }
-    ])
-    // removing items when cancel button pressed.
-    const handleRemoveItem = id => {
-        setCartProduct(cartProduct.filter(product => product._id !== id))
-    }
+    const [cartProduct, setCartProduct] = useState([])
+    const [userid, sestUserid] = useState("639ead7d0802db84b4ac4eb9");
+    useEffect(() => {
+        axios.get(`http://localhost:4000/order-details/${userid}`).then(res => {
+            // setCartProduct(res.data);
+            console.log(res.data);
+        })
+    }, [])
     return (
         // Container of left and right column.
         <div className={PlaceOrderStyle.parentDiv}>
@@ -35,38 +19,10 @@ const PlaceOrderHome = () => {
             <div className={PlaceOrderStyle.leftItems}>
                 {/* first div. */}
                 <CustomerAddress />
-                {/* Shoped Items container. */}
-                <div className={PlaceOrderStyle.cartContainer}>
-                    <h2>Products</h2>
-                    {
-                        // looping through shoped item/demo data.
-                        cartProduct.map(product =>
-                            // single shopped item.
-                            <div className={PlaceOrderStyle.innerDivparent}>
-                                {/* Cancel button */}
-                                <button className={PlaceOrderStyle.cancel} onClick={() => handleRemoveItem(product._id)}>X</button>
-                                {/* Picture of the product. */}
-                                <img src={product.picture[0]}></img>
-                                {/* details box. */}
-                                <div className={PlaceOrderStyle.innerDivWrite} >
-                                    {/* name of the product */}
-                                    <h3 className={PlaceOrderStyle.cartTitle}>
-                                        {product.name} </h3>
-                                    {/* brand */}
-                                    <div>Brand : <span>{product.brand}</span> </div>
-                                    {/* amount of quantity buyed. */}
-                                    <div>Quantity : <span>{product.quantity}</span> </div>
-                                    {/* price. */}
-                                    <div>Unit Price : <span>{product.price}</span></div>
-                                </div>
-                            </div>
-                        )}
 
-
-                </div>
             </div>
             <div className={PlaceOrderStyle.SideDiv}  >
-                <h2>Order Summary</h2>
+                <h2>Order Summery</h2>
                 <div className={PlaceOrderStyle.SideDivWrite} >
                     <div>Total Price  : <span>Purnima Friskies</span> </div>
                     <div>Item Total : <span>5</span> </div>

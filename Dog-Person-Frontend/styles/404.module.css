@@ -1,0 +1,221 @@
+.NotFound {
+    text-align: center;
+}
+
+.number {
+    font-size: 200px;
+    display: flex;
+    justify-content: center;
+}
+
+.number span {
+    display: block;
+    animation: zero 4s infinite linear;
+}
+
+.carContainer {
+    position: relative;
+    width: 200px;
+
+    height: 70px;
+    display: flex;
+    animation-name: car-move;
+    animation-duration: 10s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+}
+
+.head::before {
+    content: '/';
+    display: block;
+    width: 50%;
+    height: 50%;
+    color: transparent;
+    border-bottom-right-radius: 100%;
+    background-color: white;
+}
+
+.head::after {
+    content: '.';
+    position: absolute;
+    color: transparent;
+    display: block;
+    width: 10px;
+    height: 10px;
+    bottom: 0;
+    right: 0;
+    border-top-left-radius: 100%;
+    background-color: white;
+}
+
+.head {
+    position: relative;
+    width: 20%;
+    height: 80%;
+    background-color: rgb(0, 0, 0);
+    border-top-left-radius: 20px;
+
+}
+
+.body {
+    position: relative;
+    width: 50%;
+    background-color: black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 80%;
+}
+
+.body::after {
+    content: '.';
+    position: absolute;
+    color: transparent;
+    display: block;
+    width: 10px;
+    height: 10px;
+    bottom: 0;
+    right: 0;
+    border-top-left-radius: 100%;
+    background-color: white;
+}
+
+.body::before {
+    content: '.';
+    position: absolute;
+    color: transparent;
+    display: block;
+    width: 10px;
+    height: 10px;
+    bottom: 0;
+    left: 0;
+    border-top-right-radius: 100%;
+    background-color: white;
+}
+
+.text {
+    color: white;
+}
+
+.tail {
+    position: relative;
+    width: 10%;
+    background-color: black;
+    height: 80%;
+    border-top-right-radius: 10%;
+}
+
+.tail::before {
+    content: '.';
+    position: absolute;
+    color: transparent;
+    display: block;
+    width: 10px;
+    height: 10px;
+    bottom: 0;
+    left: 0;
+    border-top-right-radius: 100%;
+    background-color: white;
+}
+
+.wheel1,
+.wheel2 {
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    background-color: rgb(0, 0, 0);
+    border-radius: 100%;
+    bottom: -8px;
+    animation-name: wheel-move;
+    animation-duration: 1s;
+    animation-delay: 0ms;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+}
+
+.wheel1 {
+    left: -8px;
+    z-index: 2;
+}
+
+.wheel1 div,
+.wheel2 div {
+    position: absolute;
+    width: 2px;
+    height: 50%;
+    top: 0;
+    background-color: white;
+    z-index: 3;
+}
+
+.wheel1 .line1,
+.wheel2 .line1 {
+    height: 2px;
+    width: 50%;
+    top: calc(50% - 1px);
+    left: 0px;
+}
+
+.wheel1 .line2,
+.wheel2 .line2 {
+    height: 2px;
+    width: calc(50% + 1px);
+    top: calc(50% - 1px);
+    right: 0px;
+}
+
+.wheel1 .line3,
+.wheel2 .line3 {
+    width: 2px;
+    height: calc(50% + 1px);
+    left: calc(50% - 1px);
+    top: 0;
+}
+
+.wheel1 .line4,
+.wheel2 .line4 {
+    width: 2px;
+    left: calc(50% - 1px);
+    top: calc(50%);
+    height: calc(50%);
+    bottom: 0;
+}
+
+.wheel2 {
+    right: -8px;
+    z-index: 2;
+}
+
+@keyframes zero {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    50% {
+        transform: rotate(180deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes wheel-move {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(-360deg);
+    }
+}
+
+@keyframes car-move {
+    0% {
+        transform: translateX(100vw);
+    }
+
+    100% {
+        transform: translateX(-200px);
+    }
+}

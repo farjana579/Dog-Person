@@ -4,14 +4,12 @@ import ShopCard from "../../components/Shop/ShopCard";
 import styles from '../../styles/shop.module.css'
 import axios from 'axios'
 const shop = () => {
-    const [products, setProducts] = useState([{}])
-    const [type, setType] = useState(-1)
-    const [sub, setSub] = useState(-1);
+    const [products, setProducts] = useState([])
     const router = useRouter();
     useEffect(
         () => {
-            if (router.query.type !== undefined && router.query.subtype !== undefined) {
-                axios.get(`http://localhost:4000/products?type=${router.query.type}&subtype=${router.query.subtype}`).then(res => {
+            if (router?.query?.type !== undefined && router?.query?.subtype !== undefined) {
+                axios.get(`http://localhost:4000/products?type=${router?.query?.type}&subtype=${router?.query?.subtype}`).then(res => {
                     setProducts(res.data)
                 })
             }

@@ -16,8 +16,17 @@ const Review = ({ Name, headline, message, rating, like, dislike }) => {
             <div className={styles.hl}>{headline}</div>
             <div className={styles.msg}>{message}</div>
             <div className={styles.likeDislike}>
-                <img src={like_img.src} className={styles.like} />
-                <img src={dislike_img.src} className={styles.dislike} />
+                <div className={styles.flexCenter}>
+                    <div>
+                        <img src={like_img.src} className={styles.like} />
+                    </div>
+                    <div>({like})</div>
+                </div>
+                <div className={styles.flexCenter}>
+
+                    <div> <img src={dislike_img.src} className={styles.like} /> </div>
+                    <div>({dislike})</div>
+                </div>
             </div>
 
         </div>

@@ -91,6 +91,28 @@ async function server() {
       const result = await users.insertOne(data)
       res.json(result)
     })
+    app.get('/order-details/:userid', async (req, res) => {
+      const { userid } = req.params;
+      const filter = {
+        buyerID: userid
+      }
+      const cursor = orderListCollection.find(filter)
+      const result = await cursor.toArray();
+      res.json(result)
+    })
+    app.delete('/order-details/:orderid', async (req, res) => {
+      const { orderid } = req.params;
+      const filt = {
+        _id: ObjectId(orderid)
+      }
+      const result = await orderListCollection.deleteOne(filt);
+      res.json(result)
+    })
+    app.post('/order-details', async (req, res) => {
+      const productInfo = req.body;
+      const result = await orderListCollection.insertOne(productInfo);
+      res.json(result.insertedId)
+    })
   }
   finally {
 

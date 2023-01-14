@@ -37,8 +37,7 @@ async function server() {
     app.get('/products', async (req, res) => {
       const query = req.query;
       // const cursor = productCollection.find(query);
-      const cursor = productCollection.find({})
-      const result = await cursor.toArray();
+      const result = await productCollection.find({}).toArray()
       res.json(result)
     })
     app.get('/reviews/:id', async (req, res) => {

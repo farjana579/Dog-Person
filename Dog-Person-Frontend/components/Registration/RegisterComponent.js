@@ -5,22 +5,43 @@ import styles from "../../styles/registration.module.css";
 const RegisterComponent = () => {
   const [emailUsed, setEmailUsed] = useState(true);
   const [userNameUsed, setUserNameUsed] = useState(true);
+
+
   //checking if user name available in database
   const handleUserName = (e) => {
     const userName = e.target.value;
-    axios.get(`http://localhost:4000/users?name=${userName}`)
-    .then(res => {
-      setUserNameUsed(res.data)
-    });
-  };
-  // checking if email available in database.
-  const handleEmailVerification = (e) => {
-    const email = e.target.value;
-    axios.get(`http://localhost:4000/users/${email}`).then((res) => {
-      setEmailUsed(res.data);
+    axios.get(`http://localhost:4000/users?name=${userName}`).then((res) => {
+      setUserNameUsed(res.data);
+      if (userNameUsed) {
+        alert("Use another name");
+        return;
+      }
     });
   };
 
+  // checking if email available in database.
+  // const handleEmailVerification = (e) => {
+  //   const email = e.target.value;
+  //   axios.get(`http://localhost:4000/users/${email}`).then((res) => {
+  //     setEmailUsed(res.data);
+  //     if (emailUsed) {
+  //       alert("Use another email");
+  //       return;
+  //     }
+  //   });
+  // };
+
+  //check mobile is valid or not
+  
+  const handlePhone = (e) => {
+    const contact = e.target.value;
+    console.log(contact);
+    const exp = /[0][1][^2]{1}[0-9]{8}/;
+    if (!exp.test(contact)) {
+      alert("invalid");
+      return;
+    }
+  };
   // register user
   const handleRegistration = (e) => {
     e.preventDefault();
@@ -40,14 +61,7 @@ const RegisterComponent = () => {
       alert("Confirmation password is not matched");
       return;
     }
-    if (emailUsed) {
-      alert("Use another email");
-      return;
-    }
-    if(userNameUsed){
-      alert("Use another name");
-      return;
-    }
+
     const finalData = {
       email: info.email,
       name: info.name,
@@ -55,8 +69,8 @@ const RegisterComponent = () => {
       password: info.password,
     };
     axios.post(`http://localhost:4000/users`, finalData).then((res) => {
-      if(res.data.insertedId){
-        alert("successful")
+      if (res.data.insertedId) {
+        alert("successful");
       }
     });
   };
@@ -81,8 +95,14 @@ const RegisterComponent = () => {
             id="Email"
             name="email"
             placeholder="Email"
-            onBlur={handleEmailVerification}
+            // onBlur={handleEmailVerification}
           />
+          <input
+            type="tel"
+            name="contact"
+            placeholder="Contact No."
+            onBlur={handlePhone}
+          ></input>
           <input type="date" name="DOB" placeholder="Date of Birth" />
           <input
             type="password"
@@ -100,7 +120,9 @@ const RegisterComponent = () => {
           <button onClick={handleRegistration} className={styles.btnStyle}>
             Register
           </button>
-          <a href="/login">Already have an account?. go to login page.</a>
+          <a href="/login">
+            Already have an account?. <b>go to login page</b>.
+          </a>
         </form>
       </div>
     </div>

@@ -3,7 +3,7 @@ import logo from "../../image/pawBlack.png";
 import axios from "axios";
 import styles from "../../styles/registration.module.css";
 const RegistrationComponent = () => {
-  const handleLogin = (e) => {
+  const handleLogin = (e) => {  
     e.preventDefault();
     const inputs = document.getElementsByTagName("input");
     console.log(inputs);

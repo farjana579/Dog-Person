@@ -121,7 +121,8 @@ const RegisterComponent = () => {
             Register
           </button>
           <a href="/login">
-            Already have an account?. <b>go to login page</b>.
+            Already have an account?.{" "}
+            <span style={{ color: "#E76F51" }}>go to login page</span>.
           </a>
         </form>
       </div>

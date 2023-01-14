@@ -3,7 +3,7 @@ import logo from "../../image/pawBlack.png";
 import axios from "axios";
 import styles from "../../styles/registration.module.css";
 const RegistrationComponent = () => {
-  const handleLogin = (e) => {  
+  const handleLogin = (e) => {
     e.preventDefault();
     const inputs = document.getElementsByTagName("input");
     console.log(inputs);
@@ -52,7 +52,10 @@ const RegistrationComponent = () => {
             LOG IN
           </button>
           <a href="/registration">
-            New at Dog Person?. Please create a new account
+            New at Dog Person?{" "}
+            <span style={{ color: "#E76F51" }}>
+              Please create a new account.
+            </span>
           </a>
         </form>
       </div>

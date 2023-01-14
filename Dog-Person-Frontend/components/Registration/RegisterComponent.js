@@ -6,7 +6,6 @@ const RegisterComponent = () => {
   const [emailUsed, setEmailUsed] = useState(true);
   const [userNameUsed, setUserNameUsed] = useState(true);
 
-
   //checking if user name available in database
   const handleUserName = (e) => {
     const userName = e.target.value;
@@ -32,13 +31,13 @@ const RegisterComponent = () => {
   // };
 
   //check mobile is valid or not
-  
+
   const handlePhone = (e) => {
     const contact = e.target.value;
     console.log(contact);
-    const exp = /[0][1][^2]{1}[0-9]{8}/;
+    const exp = /[0][1][^012]{1}[0-9]{8}/;
     if (!exp.test(contact)) {
-      alert("invalid");
+      alert("Enter a valid number");
       return;
     }
   };
@@ -66,6 +65,7 @@ const RegisterComponent = () => {
       email: info.email,
       name: info.name,
       dob: info.DOB,
+      phone: info.contact,
       password: info.password,
     };
     axios.post(`http://localhost:4000/users`, finalData).then((res) => {

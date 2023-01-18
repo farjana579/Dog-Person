@@ -245,7 +245,7 @@
     width: 70%;
 }
 .spandesign{
-    font-size: 130px;
+    font-size: 100px;
    line-height: 90%;
     color: #1f3d4d;
     overflow: hidden;
@@ -258,13 +258,13 @@
     width: max-content;
     font-size: 100px;
     text-align: center;
-    padding: 5px 50px;
-    border-radius: 300px;
+    padding: 30px 50px;
+    border-radius: 350px;
     border: 2px solid #b68c60;
 }
 .homebtn{
     position: absolute;
-   top: 400px;
+   top: 370px;
     right:100px;
 }
 .homebtn button{

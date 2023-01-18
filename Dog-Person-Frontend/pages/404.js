@@ -34,18 +34,18 @@ const NotFound = () => {
     <div className={styles.body}>
         <div className={styles.page_container}>
             <div className={styles.page_not_found}>
-                <span className={styles.spandesign+" spandesign"}>PAGE</span>
-                <span className={styles.spandesign+" spandesign"}>
+            <span className={styles.spandesign+" spandesign"}>
                     <div className={styles.span404}>
                         404
-                    </div>
-                    NOT
+                    </div>              
                 </span>
+                <span className={styles.spandesign+" spandesign"}>
+                PAGE NOT</span>             
                 <span className={styles.spandesign+" spandesign"}>FOUND</span>
 
             </div>
            <div className={styles.homebtn+" homebtn"}>
-            <button>TAKE ME HOME</button>
+            <button><a href="/">TAKE ME HOME</a></button>
            </div>
         </div>
         </div>

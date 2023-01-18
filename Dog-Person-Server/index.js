@@ -57,6 +57,37 @@ async function server() {
       const result=await cursor.toArray();
       res.json(result);
       console.log(result)
+      // const result = await productCollection.find({}).toArray();
+      // const page = parseInt(query.page);
+      // const perPage = 20;
+      // const cursor = productCollection
+      //   .find({})
+      //   .skip((page - 1) * perPage)
+      //   .limit(perPage);
+      // const result = await cursor.toArray();
+      // res.json(result);
+      // const cursor = productCollection.aggregate([
+      //   {
+      //     $facet: {
+      //       product: [
+      //         { $match: {} },
+      //         { $skip: page * perpage },
+      //         { $limit: perpage },
+      //       ],
+      //       total: [
+      //         {
+      //           $group: {
+      //             _id: null,
+      //             count: { $sum: 1 },
+      //           },
+      //         },
+      //       ],
+      //     },
+      //   },
+      // ]);
+      // const cursor = productCollection.find().skip(page * perpage).limit(perpage);
+      // const result = await cursor.toArray();
+      // res.json(result);
     });
     app.get("/reviews/:id", async (req, res) => {
       const id = req.params.id;
@@ -97,10 +128,9 @@ async function server() {
       res.json(result === null ? false : true);
     });
     app.get("/users", async (req, res) => {
-      const name = req.query.name;
-      const filter = { name };
-      const result = await users.findOne(filter);
-      res.json(result === null ? false : true);
+      const cursor = await users.find({}).toArray();
+      console.log(cursor);
+      res.json(cursor);
     });
     app.post("/users", async (req, res) => {
       const data = req.body;

@@ -1,34 +1,55 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import logo from "../../image/pawBlack.png";
 import axios from "axios";
 import styles from "../../styles/registration.module.css";
 const RegisterComponent = () => {
-  const [emailUsed, setEmailUsed] = useState(true);
-  const [userNameUsed, setUserNameUsed] = useState(true);
+  const [errorEmail, setErrorEmail] = useState(false);
+  const [userNameUsed, setUserNameUsed] = useState([]);
+  const [errorUser, setErrorUser] = useState(false);
+  const [errorPhone, setErrorPhone] = useState(false);
 
+  useEffect(() => {
+    axios.get(`http://localhost:4000/users`).then((res) => {
+      setUserNameUsed(res.data);
+    });
+  }, []);
   //checking if user name available in database
   const handleUserName = (e) => {
-    const userName = e.target.value;
-    axios.get(`http://localhost:4000/users?name=${userName}`).then((res) => {
-      setUserNameUsed(res.data);
-      if (userNameUsed) {
-        alert("Use another name");
+    const input = e.target.value;
+    // console.log(userNameUsed);
+    for (const user of userNameUsed) {
+      const username = user.name;
+      if (username == input) {
+        console.log("hitting");
+        console.log(e.target);
+        e.target.style.border = "1px solid red";
+        e.target.style.outline = "1px solid red";
+        setErrorUser(true);
         return;
+      } else {
+        setErrorUser(false);
+        e.target.style.border = "1px solid black";
+        e.target.style.outline = "1px solid black";
       }
-    });
+    }
   };
 
-  // checking if email available in database.
-  // const handleEmailVerification = (e) => {
-  //   const email = e.target.value;
-  //   axios.get(`http://localhost:4000/users/${email}`).then((res) => {
-  //     setEmailUsed(res.data);
-  //     if (emailUsed) {
-  //       alert("Use another email");
-  //       return;
-  //     }
-  //   });
-  // };
+  //checking if email available in database.
+  const handleEmailVerification = (e) => {
+    const email = e.target.value;
+    const exp = /[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$/;
+    if (!exp.test(email)) {
+      e.target.style.border = "1px solid red";
+      e.target.style.outline = "1px solid red";
+      setErrorEmail(true);
+      return;
+    } else {
+      console.log(e.target);
+      setErrorEmail(false);
+      e.target.style.border = "1px solid black";
+      e.target.style.outline = "1px solid black";
+    }
+  };
 
   //check mobile is valid or not
 
@@ -37,16 +58,26 @@ const RegisterComponent = () => {
     console.log(contact);
     const exp = /[0][1][^012]{1}[0-9]{8}/;
     if (!exp.test(contact)) {
-      alert("Enter a valid number");
+      e.target.style.border = "1px solid red";
+      e.target.style.outline = "1px solid red";
+      setErrorPhone(true);
       return;
+    } else {
+      e.target.style.border = "1px solid black";
+      e.target.style.outline = "1px solid black";
+      setErrorPhone(false);
     }
   };
+  
   // register user
   const handleRegistration = (e) => {
     e.preventDefault();
     const inputs = document.getElementsByTagName("input");
     let info = {};
-
+    if (errorUser) {
+      alert("Unsuccessful");
+      return;
+    }
     for (const input of inputs) {
       const name = input.name;
       const value = input.value;
@@ -88,21 +119,30 @@ const RegisterComponent = () => {
             id="fname"
             name="name"
             placeholder="Name"
-            onBlur={handleUserName}
+            onChange={handleUserName}
           ></input>
+          {errorUser === true && (
+            <div class={styles.errorMessage}>Already used.</div>
+          )}
           <input
             type="text"
             id="Email"
             name="email"
             placeholder="Email"
-            // onBlur={handleEmailVerification}
+            onChange={handleEmailVerification}
           />
+          {errorEmail === true && (
+            <div class={styles.errorMessage}>Pattern didn't match.</div>
+          )}
           <input
             type="tel"
             name="contact"
             placeholder="Contact No."
-            onBlur={handlePhone}
+            onChange={handlePhone}
           ></input>
+          {errorPhone === true && (
+            <div class={styles.errorMessage}>Invalid phone format.</div>
+          )}
           <input type="date" name="DOB" placeholder="Date of Birth" />
           <input
             type="password"

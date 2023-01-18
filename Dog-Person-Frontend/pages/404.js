@@ -1,13 +1,53 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import styles from '../styles/404.module.css'
-const NotFound = () => {
-    return (
+import gsap from 'gsap'
+import CSSPlugin from 'gsap/CSSPlugin'
 
-        <div className={styles.NotFound}>
-            <div className={styles.number}>
-                4<span>0</span>4
+gsap.registerPlugin(CSSPlugin)
+
+
+const NotFound = () => {
+    useEffect(()=>{
+       
+       const tl=new gsap.timeline();
+        tl.from(".spandesign",{
+          duration:.8,
+          stagger:{
+            amount: .7
+          },
+          y: 200,
+          skewY:10,
+          opacity: 0
+        })
+     
+      tl.from(".homebtn",{
+            scale:0,
+            duration:.5,
+            stagger:{
+                amount:.6
+            }
+        },"-=.2")
+
+    }
+    ,[])
+    return (
+    <div className={styles.body}>
+        <div className={styles.page_container}>
+            <div className={styles.page_not_found}>
+                <span className={styles.spandesign+" spandesign"}>PAGE</span>
+                <span className={styles.spandesign+" spandesign"}>
+                    <div className={styles.span404}>
+                        404
+                    </div>
+                    NOT
+                </span>
+                <span className={styles.spandesign+" spandesign"}>FOUND</span>
+
             </div>
-            আমায় ডেকো না!! ফেরানো যাবে না!!
+           <div className={styles.homebtn+" homebtn"}>
+            <button>TAKE ME HOME</button>
+           </div>
+        </div>
         </div>
     );
 };

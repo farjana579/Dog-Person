@@ -52,28 +52,11 @@ async function server() {
         type,
         subtype,
       };
-      const cursor = productCollection.aggregate([
-        {
-          $facet: {
-            product: [
-              { $match: {} },
-              { $skip: page * perpage },
-              { $limit: perpage },
-            ],
-            total: [
-              {
-                $group: {
-                  _id: null,
-                  count: { $sum: 1 },
-                },
-              },
-            ],
-          },
-        },
-      ]);
-      // const cursor = productCollection.find().skip(page * perpage).limit(perpage);
-      const result = await cursor.toArray();
+      const pageNo=query.page;    
+      const cursor=productCollection.find({}).skip((pageNo-1)*perpage).limit(perpage);
+      const result=await cursor.toArray();
       res.json(result);
+      console.log(result)
     });
     app.get("/reviews/:id", async (req, res) => {
       const id = req.params.id;

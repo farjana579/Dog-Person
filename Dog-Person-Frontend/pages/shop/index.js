@@ -15,10 +15,10 @@ const shop = () => {
                 setPage(router?.query?.page);
 
                 axios.get(`http://localhost:4000/products?type=${router?.query?.type}&subtype=${router?.query?.subtype}&page=${router?.query?.page}`).then(res => {
-                    setProducts(res.data[0].product)
-                    setTotalPage(Math.ceil((res.data[0].total[0].count) / 20.0))
-                    console.log(Math.ceil((res.data[0].total[0].count) / 20.0));
-                    setTotalProduct(res.data[0].total[0].count)
+                    setProducts(res.data)
+                    // setTotalPage(Math.ceil((res.data[0].total[0].count) / 20.0))
+                    // console.log(Math.ceil((res.data[0].total[0].count) / 20.0));
+                    // setTotalProduct(res.data[0].total[0].count)
                 })
             }
         }, [router])

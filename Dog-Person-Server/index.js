@@ -48,19 +48,56 @@ async function server() {
       const perpage = 20;
       const type = req.query.type;
       const subtype = req.query.subtype;
-      const filter = {
-        //type: type,
-        subtype: subtype,
-      };
       const pageNo = query.page;
-      console.log(pageNo);
+     
+
+      const filter = {
+         type: type,
+          subtype: subtype
+        };  
+        
+        //subtype is empty
+      const filter2={
+        type: type
+      }
+    if(type=="" && subtype==""){
       const cursor = productCollection
+             .find({})
+             .skip((pageNo - 1) * perpage)
+             .limit(perpage);
+             const result = await cursor.toArray();
+             res.json(result);
+    }
+       else if(subtype=="")
+          {
+          
+            const cursor = productCollection
+             .find(filter2)
+             .skip((pageNo - 1) * perpage)
+             .limit(perpage);
+             const result = await cursor.toArray();
+             res.json(result);
+            }
+        else 
+        {
+       const cursor = productCollection
         .find(filter)
         .skip((pageNo - 1) * perpage)
         .limit(perpage);
-      const result = await cursor.toArray();
-      res.json(result);
-      console.log(result);
+        const result = await cursor.toArray();
+        res.json(result);
+        }
+        
+
+        
+
+       
+        
+
+      
+       // console.log(result);
+      
+     
       // const result = await productCollection.find({}).toArray();
       // const page = parseInt(query.page);
       // const perPage = 20;

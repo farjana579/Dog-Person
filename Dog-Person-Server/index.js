@@ -41,35 +41,35 @@ async function server() {
     });
     app.get("/products", async (req, res) => {
       const query = req.query;
-      // const cursor = productCollection.find(query);
-      // const result = await productCollection.find({}).toArray();
-      // const page = parseInt(query.page);
-      // const perPage = 20;
-      // const cursor = productCollection
-      //   .find({})
-      //   .skip((page - 1) * perPage)
-      //   .limit(perPage);
-      // const result = await cursor.toArray();
-      // res.json(result);
-      const cursor = productCollection.aggregate([
-        {
-          $facet: {
-            product: [
-              { $match: {} },
-              { $skip: page * perpage },
-              { $limit: perpage },
-            ],
-            total: [
-              {
-                $group: {
-                  _id: null,
-                  count: { $sum: 1 },
-                },
-              },
-            ],
-          },
-        },
-      ]);
+     // const cursor = productCollection.find(query);
+      //const result = await productCollection.find({}).toArray();
+      const page = parseInt(query.page);
+      const perPage = 20;
+      const cursor = productCollection
+        .find({})
+        .skip((page - 1) * perPage)
+        .limit(perPage);
+      const result = await cursor.toArray();
+      res.json(result);
+      // const cursor = productCollection.aggregate([
+      //   {
+      //     $facet: {
+      //       product: [
+      //         { $match: {} },
+      //         { $skip: page * perpage },
+      //         { $limit: perpage },
+      //       ],
+      //       total: [
+      //         {
+      //           $group: {
+      //             _id: null,
+      //             count: { $sum: 1 },
+      //           },
+      //         },
+      //       ],
+      //     },
+      //   },
+      // ]);
       // const cursor = productCollection.find().skip(page * perpage).limit(perpage);
       // const result = await cursor.toArray();
       // res.json(result);

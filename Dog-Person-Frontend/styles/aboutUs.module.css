@@ -1,0 +1,72 @@
+.wholeout{
+    background-color:#ddd;
+    
+}
+.whole{
+    display: flex;
+   justify-content: space-evenly;
+   
+}
+.section{
+    
+    width :fit-content;
+    height:fit-content ;
+    padding: 2%;
+   
+    
+}
+.container{
+    
+  padding: 1%;
+    
+
+}
+.ContentSection{
+    
+   width: fit-content;
+   
+}
+.Map{
+
+
+   padding: 2%;
+  
+}
+.ContentSection .title{
+    text-transform: uppercase;
+    font-size: 28px;
+    color: #e6b223;
+
+}
+.ContentSection .h3 {
+    margin-top: 20px;
+    color: #5d5d5d;
+    font-size:21px ;
+
+}
+.ContentSection .content .p {
+    margin-top: 10px;
+    color: #5d5d5d;
+    font-family: sans-serif;
+    font-size: 18px;
+    line-height: 1.5;
+
+}
+.ContentSection .content .button{
+    margin-top: 20px;
+}
+.ContentSection .content .button a{
+    background-color: #3d3d3d;
+    padding: 12px 40px;
+    text-decoration: none;
+    color: #fff;
+    font-size: 25px;
+    letter-spacing: 1.5px;
+    border-radius: 8px;
+}
+.ContentSection .content .button a:hover{
+    background-color: #e6b223;
+    color: #fff;
+    
+
+}

@@ -49,14 +49,18 @@ async function server() {
       const type = req.query.type;
       const subtype = req.query.subtype;
       const filter = {
-        type,
-        subtype,
+        //type: type,
+        subtype: subtype,
       };
-      const pageNo=query.page;    
-      const cursor=productCollection.find({}).skip((pageNo-1)*perpage).limit(perpage);
-      const result=await cursor.toArray();
+      const pageNo = query.page;
+      console.log(pageNo);
+      const cursor = productCollection
+        .find(filter)
+        .skip((pageNo - 1) * perpage)
+        .limit(perpage);
+      const result = await cursor.toArray();
       res.json(result);
-      console.log(result)
+      console.log(result);
       // const result = await productCollection.find({}).toArray();
       // const page = parseInt(query.page);
       // const perPage = 20;
@@ -89,6 +93,7 @@ async function server() {
       // const result = await cursor.toArray();
       // res.json(result);
     });
+
     app.get("/reviews/:id", async (req, res) => {
       const id = req.params.id;
       const filter = {

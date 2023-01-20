@@ -3,6 +3,19 @@ const cors = require("cors"); // cross origin resource sharing
 const mongodb = require("mongodb"); // mongo db
 const { MongoClient } = mongodb; // to connect mongodb
 const app = express(); // backend in a variable
+//const cookieParser = require("cookie-parser");
+// const sessions = require("express-session");
+// const oneDay = 1000 * 60 * 60 * 24;
+// var session;
+// app.use(cookieParser());
+// app.use(
+//   sessions({
+//     secret: "secret",
+//     saveUninitialized: true,
+//     cookie: { maxAge: oneDay },
+//     resave: false,
+//   })
+// );
 app.use(cors()); // using cors
 require("dotenv").config(); // configuring dot env
 app.use(express.json());
@@ -49,55 +62,41 @@ async function server() {
       const type = req.query.type;
       const subtype = req.query.subtype;
       const pageNo = query.page;
-     
 
       const filter = {
-         type: type,
-          subtype: subtype
-        };  
-        
-        //subtype is empty
-      const filter2={
-        type: type
-      }
-    if(type=="" && subtype==""){
-      const cursor = productCollection
-             .find({})
-             .skip((pageNo - 1) * perpage)
-             .limit(perpage);
-             const result = await cursor.toArray();
-             res.json(result);
-    }
-       else if(subtype=="")
-          {
-          
-            const cursor = productCollection
-             .find(filter2)
-             .skip((pageNo - 1) * perpage)
-             .limit(perpage);
-             const result = await cursor.toArray();
-             res.json(result);
-            }
-        else 
-        {
-       const cursor = productCollection
-        .find(filter)
-        .skip((pageNo - 1) * perpage)
-        .limit(perpage);
+        type: type,
+        subtype: subtype,
+      };
+
+      //subtype is empty
+      const filter2 = {
+        type: type,
+      };
+      if (type == "" && subtype == "") {
+        const cursor = productCollection
+          .find({})
+          .skip((pageNo - 1) * perpage)
+          .limit(perpage);
         const result = await cursor.toArray();
         res.json(result);
-        }
-        
+      } else if (subtype == "") {
+        const cursor = productCollection
+          .find(filter2)
+          .skip((pageNo - 1) * perpage)
+          .limit(perpage);
+        const result = await cursor.toArray();
+        res.json(result);
+      } else {
+        const cursor = productCollection
+          .find(filter)
+          .skip((pageNo - 1) * perpage)
+          .limit(perpage);
+        const result = await cursor.toArray();
+        res.json(result);
+      }
 
-        
+      // console.log(result);
 
-       
-        
-
-      
-       // console.log(result);
-      
-     
       // const result = await productCollection.find({}).toArray();
       // const page = parseInt(query.page);
       // const perPage = 20;
@@ -158,12 +157,16 @@ async function server() {
       const result = await reviewCollection.insertOne(doc);
       res.json(result);
     });
+    
+    
     app.get("/login", async (req, res) => {
       const { email, password } = req.query;
       const filter = { email, password };
       const result = await users.findOne(filter);
+      // req.session.isAuth = true;
       res.json(result ? true : false);
     });
+
     app.get("/users/:email", async (req, res) => {
       const { email } = req.params;
       const result = await users.findOne({ email: email });
@@ -205,7 +208,7 @@ async function server() {
   }
 }
 server().catch(console.dir);
-
+ 
 app.get("/", (req, res) => {
   res.json("Hello world");
 });

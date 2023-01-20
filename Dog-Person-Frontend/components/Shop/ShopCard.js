@@ -1,7 +1,8 @@
 // rating icon from material ui(mui)
 import { Rating } from '@mui/material';
 // stylesheet
-import styles from '../../styles/shopCard.module.css'
+import styles from '../../styles/shopCard.module.scss'
+// import styles from '../../styles/shopCard.module.css'
 // Shop card component.
 const ShopCard = ({ image, name, price, avgrating, ratingcount, paragraph, id }) => {
     console.log(id);

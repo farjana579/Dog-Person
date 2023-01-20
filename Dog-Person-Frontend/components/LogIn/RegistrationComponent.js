@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import logo from "../../image/pawBlack.png";
 import axios, { Axios } from "axios";
-import styles from "../../styles/registration.module.css";
+import styles from "../../styles/Registration.module.scss";
+// import styles from "../../styles/registration.module.css";
 const RegistrationComponent = () => {
   const [showHome, setShowHome] = useState(false);
   useEffect(() => {
@@ -47,7 +48,7 @@ const RegistrationComponent = () => {
         <h1>Dog Person</h1>
       </div>
       {showHome ? (
-        <index/>
+        <index />
       ) : (
         <div className={styles.registrationBox}>
           <form onSubmit={handleLogin}>

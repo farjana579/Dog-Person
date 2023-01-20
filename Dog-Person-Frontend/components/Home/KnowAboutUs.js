@@ -1,5 +1,6 @@
 import React from "react";
-import styles from "../../styles/know_about_us.module.css";
+import styles from "../../styles/know_about_us.module.scss";
+// import styles from "../../styles/know_about_us.module.css";
 const KnowAboutUs = () => {
   return (
     <div>

@@ -97,37 +97,6 @@ async function server() {
 
       // console.log(result);
 
-      // const result = await productCollection.find({}).toArray();
-      // const page = parseInt(query.page);
-      // const perPage = 20;
-      // const cursor = productCollection
-      //   .find({})
-      //   .skip((page - 1) * perPage)
-      //   .limit(perPage);
-      // const result = await cursor.toArray();
-      // res.json(result);
-      // const cursor = productCollection.aggregate([
-      //   {
-      //     $facet: {
-      //       product: [
-      //         { $match: {} },
-      //         { $skip: page * perpage },
-      //         { $limit: perpage },
-      //       ],
-      //       total: [
-      //         {
-      //           $group: {
-      //             _id: null,
-      //             count: { $sum: 1 },
-      //           },
-      //         },
-      //       ],
-      //     },
-      //   },
-      // ]);
-      // const cursor = productCollection.find().skip(page * perpage).limit(perpage);
-      // const result = await cursor.toArray();
-      // res.json(result);
     });
 
     app.get("/reviews/:id", async (req, res) => {
@@ -157,8 +126,23 @@ async function server() {
       const result = await reviewCollection.insertOne(doc);
       res.json(result);
     });
-    
-    
+    app.put('/reviews/:id', async (req, res) => {
+      const body = req.body;
+      const id = req.params.id;
+      const filter = {
+        _id: ObjectId(id)
+      }
+      const result = await reviewCollection.updateOne(filter, {
+        $set: {
+          ...body
+        }
+      })
+      res.json(result);
+    })
+    // app.get('/reviews', async (req, res) => {
+    //   const result = await reviewCollection.deleteMany({});
+    //   res.json(result)
+    // })
     app.get("/login", async (req, res) => {
       const { email, password } = req.query;
       const filter = { email, password };
@@ -208,7 +192,7 @@ async function server() {
   }
 }
 server().catch(console.dir);
- 
+
 app.get("/", (req, res) => {
   res.json("Hello world");
 });

@@ -1,6 +1,23 @@
 import styles from "../../styles/Home.module.css";
 import logo from "../../image/logo.png";
+import { useEffect, useState } from "react";
+import { useRouter } from "next/router";
 const Navigation = () => {
+  const [creds, setCreds] = useState(false);
+  const router = useRouter();
+  useEffect(() => {
+    if (localStorage.getItem("Email") && localStorage.getItem("Password")) {
+      setCreds(true)
+    }
+    else {
+      setCreds(false)
+    }
+  }, [creds, router])
+  const removeCred = () => {
+    localStorage.removeItem("Email");
+    localStorage.removeItem("Password");
+    setCreds(false)
+  }
   return (
     <div className={styles.NavLogo}>
       <a href="/">
@@ -80,9 +97,13 @@ const Navigation = () => {
           <li className={styles.classifyNav}>
             <a href="/classify">Classify</a>
           </li>
-          <button className={styles.loginbtn}>
-            <a href="/login">Log In</a>
-          </button>
+          {!creds ?
+            <button className={styles.loginbtn}>
+              <a href="/login">Log In</a>
+            </button> :
+            <button className={styles.loginbtn} onClick={removeCred}>
+              Log Out
+            </button>}
         </ul>
       </div>
     </div>

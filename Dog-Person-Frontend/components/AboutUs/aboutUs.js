@@ -6,6 +6,7 @@ import im2 from "../../image/fbLogo.png"
 import im3 from "../../image/instaLogo.png"
 import im4 from "../../image/twitterLogo.png"
 import im5 from "../../image/mission.png"
+import im6 from "../../image/gmail.png"
 const aboutUs = () => {
     return (
         <div>
@@ -41,6 +42,7 @@ const aboutUs = () => {
         <img src={im2.src}></img>
         <img src={im3.src}></img>
         <img src={im4.src}></img>  
+        <img src={im6.src}></img>  
         </div>
         
       </div>

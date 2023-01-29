@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from "react";
+import { useRouter } from 'next/router'
 import logo from "../../image/pawBlack.png";
-import axios, { Axios } from "axios";
+import axios from "axios";
 import styles from "../../styles/registration.module.css";
 const RegistrationComponent = () => {
-  const [showHome, setShowHome] = useState(false);
+  const router = useRouter();
   useEffect(() => {
-    if (localStorage.getItem("Emaill") && localStorage.getItem("Password")) {
-      setShowHome("true");
+    if (localStorage.getItem("Email") && localStorage.getItem("Password")) {
+      router.push('/')
     }
   });
   const handleLogin = (e) => {
@@ -32,8 +33,8 @@ const RegistrationComponent = () => {
         if (res.data) {
           localStorage.setItem("Email", info.email);
           localStorage.setItem("Password", info.password);
+          router.push('/')
           alert("Success");
-          window.location.reload();
         } else {
           alert("failed");
         }
@@ -42,15 +43,14 @@ const RegistrationComponent = () => {
 
   return (
     <div>
-      <div>
-        <div className={styles.registrationHeader}>
-          <img src={logo.src}></img>
-          <h1>Dog Person</h1>
-        </div>
+      <div className={styles.registrationHeader}>
+        <img src={logo.src}></img>
+        <h1>Dog Person</h1>
+      </div>
 
-        <div className={styles.registrationBox}>
-          <form onSubmit={handleLogin}>
-            <input type="text" id="Email" name="email" placeholder="Email" />
+      <div className={styles.registrationBox}>
+        <form onSubmit={handleLogin}>
+          <input type="text" id="Email" name="email" placeholder="Email" />
 
             <input
               type="password"

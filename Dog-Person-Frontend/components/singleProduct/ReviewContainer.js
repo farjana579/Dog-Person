@@ -47,7 +47,7 @@ const ReviewContainer = ({ id }) => {
             {
                 reviews.map(review =>
                     <Review Name={review.user_name} headline={review.title}
-                        message={review.description} rating={review.rating} like={review.like} dislike={review.dislike} />
+                        message={review.description} rating={review.rating} like={review.like} dislike={review.dislike} id={review._id} />
                 )
             }
             <div className={styles.cmnt}>

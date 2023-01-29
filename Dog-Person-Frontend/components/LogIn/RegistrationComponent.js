@@ -42,13 +42,12 @@ const RegistrationComponent = () => {
 
   return (
     <div>
-      <div className={styles.registrationHeader}>
-        <img src={logo.src}></img>
-        <h1>Dog Person</h1>
-      </div>
-      {showHome ? (
-        <index/>
-      ) : (
+      <div>
+        <div className={styles.registrationHeader}>
+          <img src={logo.src}></img>
+          <h1>Dog Person</h1>
+        </div>
+
         <div className={styles.registrationBox}>
           <form onSubmit={handleLogin}>
             <input type="text" id="Email" name="email" placeholder="Email" />
@@ -62,9 +61,13 @@ const RegistrationComponent = () => {
             <a>
               <i>Forgot password?</i>
             </a>
+
             <button onClick={handleLogin} className={styles.btnStyle}>
               LOG IN
             </button>
+            {showHome === true && (
+              <button className={styles.btnStyle}>LOG Out</button>
+            )}
             <a href="/registration">
               New at Dog Person?{" "}
               <span style={{ color: "#E76F51" }}>
@@ -73,7 +76,7 @@ const RegistrationComponent = () => {
             </a>
           </form>
         </div>
-      )}
+      </div>
     </div>
   );
 };

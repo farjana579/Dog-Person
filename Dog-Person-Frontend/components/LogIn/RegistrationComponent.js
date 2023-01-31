@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useRouter } from 'next/router'
+import { useRouter } from "next/router";
 import logo from "../../image/pawBlack.png";
 import axios from "axios";
 import styles from "../../styles/registration.module.css";
@@ -7,7 +7,7 @@ const RegistrationComponent = () => {
   const router = useRouter();
   useEffect(() => {
     if (localStorage.getItem("Email") && localStorage.getItem("Password")) {
-      router.push('/')
+      router.push("/");
     }
   });
   const handleLogin = (e) => {
@@ -33,7 +33,7 @@ const RegistrationComponent = () => {
         if (res.data) {
           localStorage.setItem("Email", info.email);
           localStorage.setItem("Password", info.password);
-          router.push('/')
+          router.push("/");
           alert("Success");
         } else {
           alert("failed");
@@ -61,9 +61,13 @@ const RegistrationComponent = () => {
           <a>
             <i>Forgot password?</i>
           </a>
+
           <button onClick={handleLogin} className={styles.btnStyle}>
             LOG IN
           </button>
+          {/* {showHome === true && (
+            <button className={styles.btnStyle}>LOG Out</button>
+          )} */}
           <a href="/registration">
             New at Dog Person?{" "}
             <span style={{ color: "#E76F51" }}>

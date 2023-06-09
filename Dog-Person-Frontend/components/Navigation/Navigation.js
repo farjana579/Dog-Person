@@ -6,7 +6,7 @@ const Navigation = () => {
   const [creds, setCreds] = useState(false);
   const router = useRouter();
   useEffect(() => {
-    if (localStorage.getItem("Email") && localStorage.getItem("Password")) {
+    if (localStorage.getItem("Email") && localStorage.getItem("Password") || sessionStorage.getItem("Email") && sessionStorage.getItem("Password")) {
       setCreds(true)
     }
     else {
@@ -17,6 +17,9 @@ const Navigation = () => {
     localStorage.removeItem("Email");
     localStorage.removeItem("Password");
     localStorage.removeItem("username")
+    sessionStorage.removeItem("Email");
+    sessionStorage.removeItem("Password");
+    sessionStorage.removeItem("username")
     setCreds(false)
   }
   return (

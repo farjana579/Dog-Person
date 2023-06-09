@@ -3,10 +3,11 @@ import { useRouter } from "next/router";
 import logo from "../../image/pawBlack.png";
 import axios from "axios";
 import styles from "../../styles/registration.module.css";
+import { Checkbox } from "@mui/material";
 const RegistrationComponent = () => {
   const router = useRouter();
   useEffect(() => {
-    if (localStorage.getItem("Email") && localStorage.getItem("Password")) {
+    if (localStorage.getItem("Email") && localStorage.getItem("Password") || sessionStorage.getItem("Email") && sessionStorage.getItem("Password")) {
       router.push("/");
     }
   });
@@ -31,9 +32,17 @@ const RegistrationComponent = () => {
       )
       .then((res) => {
         if (res.data) {
-          localStorage.setItem("username", res.data.name);
-          localStorage.setItem("Email", info.email);
-          localStorage.setItem("Password", info.password);
+          localStorage.clear();
+          if (document.getElementById("remember").checked) {
+            localStorage.setItem("username", res.data.name);
+            localStorage.setItem("Email", info.email);
+            localStorage.setItem("Password", info.password);
+          }
+          else {
+            sessionStorage.setItem("username", res.data.name);
+            sessionStorage.setItem("Email", info.email);
+            sessionStorage.setItem("Password", info.password);
+          }
           router.push("/");
           alert("Success");
         } else {
@@ -62,7 +71,10 @@ const RegistrationComponent = () => {
           <a>
             <i>Forgot password?</i>
           </a>
-
+          <div className={styles.remember}>
+            <input type="checkbox" id="remember" />
+            <label htmlFor="remember">Remeber me.</label>
+          </div>
           <button onClick={handleLogin} className={styles.btnStyle}>
             LOG IN
           </button>

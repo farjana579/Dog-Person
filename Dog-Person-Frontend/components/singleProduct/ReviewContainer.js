@@ -5,10 +5,12 @@ import axios from 'axios';
 import writeStyles from '../../styles/writeReview.module.css';
 import { Rating } from '@mui/material';
 import { useRouter } from 'next/router';
-const ReviewContainer = ({ id, setRating, setCount }) => {
+const ReviewContainer = ({ id }) => {
     const [reviews, setReviews] = useState([]);
     const [value, setValue] = useState(0)
     const [writeReview, setWriteReview] = useState(false);
+    const [count, setCount] = useState(0);
+    const [rating, setRating] = useState(0);
     const [username, setUsername] = useState(null);
     const router = useRouter();
     useEffect(() => {
@@ -20,12 +22,11 @@ const ReviewContainer = ({ id, setRating, setCount }) => {
                 }
                 sum /= res.data.length;
                 setReviews(res.data);
-                // setCount(res.data)
-                // setRating(sum)
-                // console.log(res.data);
+                setCount(res.data)
+                setRating(sum)
             })
             if (username == null)
-                setUsername(localStorage.getItem("username"))
+                setUsername(localStorage.getItem("username") == null ? sessionStorage.getItem("username") : localStorage.getItem("username"))
         }
     }, [id])
 
@@ -56,7 +57,7 @@ const ReviewContainer = ({ id, setRating, setCount }) => {
             })
     }
     const loggedIn = () => {
-        if (localStorage.getItem("username") == null) {
+        if (localStorage.getItem("username") == null && sessionStorage.getItem("username") == null) {
             router.push("/login")
             return false;
         }
@@ -64,7 +65,7 @@ const ReviewContainer = ({ id, setRating, setCount }) => {
     }
     return (
         <div className={styles.customer}>
-            <h3 className={styles.headln}>Customer Review</h3>
+            <h3 className={styles.headln}>Customer Review <br />Average Rating: <Rating value={rating} precision={0.1} readOnly />({rating})</h3>
             {
                 reviews.map(review => <Review Name={review.username} headline={review.title}
                     message={review.description} rating={review.rating} like={review.like} dislike={review.dislike} id={review._id} react={review.react} username={username} />

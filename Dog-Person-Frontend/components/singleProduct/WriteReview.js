@@ -5,7 +5,7 @@ import axios from 'axios';
 
 const WriteReview = ({ id }) => {
   const [value, setValue] = useState(0)
-  const username = localStorage.getItem("username")
+  const username = localStorage.getItem("username") || sessionStorage.getItem("username")
   console.log(username);
   const handleAddReview = e => {
     // getting value from input.

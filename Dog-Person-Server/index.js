@@ -16,6 +16,7 @@ const app = express(); // backend in a variable
 //     resave: false,
 //   })
 // );
+
 app.use(cors()); // using cors
 require("dotenv").config(); // configuring dot env
 app.use(express.json());
@@ -285,6 +286,15 @@ async function server() {
   }
 }
 server().catch(console.dir);
+
+
+
+
+// //for graphql section
+// const {ApolloServer}=require('apollo-sever');
+// const mongoose=require('mongoose');
+// const typeDefs=require('./graphql/typeDefs');
+// const resolvers=require('graphql/resolvers');
 
 app.get("/", (req, res) => {
   res.json("Hello world");

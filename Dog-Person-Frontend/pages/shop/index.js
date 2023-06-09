@@ -29,7 +29,7 @@ const shop = () => {
         });
     }
   }, [router]);
-    
+
   const handleIncrement = () => {
     let newPage = parseInt(page) + 1;
     router.push(
@@ -60,6 +60,8 @@ const shop = () => {
           // )
           products?.map((product) => (
             <ShopCard
+              subtype={product.subtype}
+              type={product.type}
               image={product.picture}
               name={product.name}
               price={product.price}
@@ -92,7 +94,9 @@ const shop = () => {
         {/* <button onClick={() => { handlePageClick(totalPage) }}>
                     {totalPage}
                 </button> */}
-        {<button onClick={handleIncrement}>Next</button>}
+        {
+          products.length == 20 &&
+          <button onClick={handleIncrement}>Next</button>}
       </div>
     </div>
   );

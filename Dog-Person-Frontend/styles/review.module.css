@@ -7,6 +7,9 @@
 
 .review {
     margin-bottom: 20px;
+    box-shadow: 2px 2px 4px grey;
+    border-radius: 12px;
+    padding: 10px;
 }
 
 .name {

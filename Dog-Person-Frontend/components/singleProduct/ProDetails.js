@@ -4,6 +4,7 @@ import { useRouter } from 'next/router';
 import React, { useEffect, useState } from 'react';
 import styles from '../../styles/productDetails.module.css'
 import ReviewContainer from './ReviewContainer';
+import AvgRating from './AvgRating';
 const ProDetails = () => {
     // product holds the details of the product. initial value is a empty object.
     const [product, setProduct] = useState({
@@ -17,6 +18,8 @@ const ProDetails = () => {
         about: '',
 
     })
+    const [rating, setRating] = useState(0);
+    const [count, setCount] = useState(0);
     // getting id of the product from the url.
     const [id, setId] = useState();
     const [userInfo, setUserInfo] = useState("639ead7d0802db84b4ac4eb9")
@@ -81,7 +84,7 @@ const ProDetails = () => {
                 </div>
                 <div className={styles.primaryDescription}>
                     <div className={styles.brand}>Brand:  <span>{product.brand}</span></div>
-                    <div className={styles.ratings}><Rating readOnly value={product.avg_rating} /> ({product.rating} Ratings)</div>
+                    <div className={styles.ratings}><Rating precision={0.1} value={rating} readOnly />{count} Ratings</div>
                     <div className={styles.price}>৳ {product.price}</div>
                     <div className={styles.vat}>All prices include VAT.</div>
                     <div className={styles.weight}>Weight: {product.weight}kg</div>
@@ -122,7 +125,7 @@ const ProDetails = () => {
                 </div>
             </div>
             {/* customer review */}
-            <ReviewContainer id={id} />
+            <ReviewContainer id={id} setCount={setCount} setRating={setRating} />
         </div>
     );
 };

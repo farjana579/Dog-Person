@@ -31,6 +31,7 @@ const RegistrationComponent = () => {
       )
       .then((res) => {
         if (res.data) {
+          localStorage.setItem("username", res.data.name);
           localStorage.setItem("Email", info.email);
           localStorage.setItem("Password", info.password);
           router.push("/");

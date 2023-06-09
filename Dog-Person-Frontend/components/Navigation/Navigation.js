@@ -16,6 +16,7 @@ const Navigation = () => {
   const removeCred = () => {
     localStorage.removeItem("Email");
     localStorage.removeItem("Password");
+    localStorage.removeItem("username")
     setCreds(false)
   }
   return (

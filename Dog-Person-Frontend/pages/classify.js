@@ -1,7 +1,9 @@
 import { useState } from 'react';
 import style from '../styles/classify.module.css'
-// import * as tf from '@tensorflow/tfjs'
+import * as tf from '@tensorflow/tfjs'
+import * as tmImage from '@teachablemachine/image'
 const Classify = () => {
+    let model;
     const [puppy, setPuppy] = useState(null)
     const handleImageUpload = (e) => {
         if (e.target.files[0]) {
@@ -12,16 +14,25 @@ const Classify = () => {
         }
     }
     async function runmodel() {
-        let image = new Image(150, 150)
+        const url = "https://raw.githubusercontent.com/farjana579/Dog-Person/main/Dog-Person-Frontend/models/";
+        const modelUrl = url + "model.json"
+        const metaDataUrl = url + "metadata.json"
+        model = await tmImage.load(modelUrl, metaDataUrl);
+        const classCount = model.getTotalClasses();
+        let image = new Image(200, 150)
         image.src = puppy;
-        let tfTensor = tf.browser.fromPixels(image);
-        tfTensor = tfTensor.div(255.0);
-        tfTensor = tfTensor.expandDims(0);
-        tfTensor = tfTensor.cast("float32");
+        // let tfTensor = tf.browser.fromPixels(image);
+        // tfTensor = tfTensor.div(255.0);
+        // tfTensor = tfTensor.expandDims(0);
+        // tfTensor = tfTensor.cast("float32");
+        try {
+            const imageBitmap = createImageBitmap(image);
+            console.log(image);
+            const pred = model.predict(imageBitmap).arraySync()[0];
+            let res = pred.squeeze();
+        } catch (Exception) {
 
-        const model = await tf.loadLayersModel('https://raw.githubusercontent.com/farjana579/Dog-Person-Frontend/main/models/model.json')
-        const pred = model.predict(tfTensor).arraySync()[0];
-        let res = pred.squeeze();
+        }
     }
     const handlePredict = () => {
         runmodel();
@@ -31,7 +42,7 @@ const Classify = () => {
 
             <div className={style.imageContainer}>
                 {
-                   puppy &&
+                    puppy &&
                     <img src={puppy} alt="Puppy" />
                 }
             </div>

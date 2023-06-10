@@ -96,8 +96,6 @@ async function server() {
         res.json(result);
       }
 
-      // console.log(result);
-
     });
 
 
@@ -112,96 +110,7 @@ async function server() {
       res.json(result);
     });
     app.get("/reviews", async (req, res) => {
-      // const result = [
-      //   {
-      //     "_id": "63d1361a4517a159378d53ec",
-      //     "productID": "63c8ec052e84587deb4dc68c",
-      //     "title": "Lorem Ipsum",
-      //     "rating": 3,
-      //     "description": "63c8ec052e84587deb4dc68cn publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document or a typeface without relying on meaningful content. Lorem ipsum may be used as a placeholder before final copy is available.\n",
-      //     "like": 2,
-      //     "dislike": 1,
-      //     "review_date": "2023-01-25T14:00:58.728Z",
-      //     "reacts": []
-      //   },
-      //   {
-      //     "_id": "63f4d5abe166ad56389d6199",
-      //     "productID": "63c8ec052e84587deb4dc680",
-      //     "title": "best ",
-      //     "rating": 0,
-      //     "description": "",
-      //     "like": 0,
-      //     "dislike": 0,
-      //     "review_date": "2023-02-21T14:31:07.254Z",
-      //     "reacts": []
-      //   },
-      //   {
-      //     "_id": "63f4d1e50fd8eedca1df492b",
-      //     "productID": "63c8ec052e84587deb4dc6c1",
-      //     "title": "Good",
-      //     "rating": 3,
-      //     "description": "",
-      //     "like": 0,
-      //     "dislike": 0,
-      //     "review_date": "2023-02-21T14:15:01.542Z",
-      //     "reacts": []
-      //   },
-      //   {
-      //     "_id": "647e13a09f1b2f097241c959",
-      //     "productID": "63c8ec052e84587deb4dc6b1",
-      //     "title": "very good products",
-      //     "rating": 4,
-      //     "description": "Nice food collections",
-      //     "like": 1,
-      //     "dislike": 0,
-      //     "review_date": "2023-06-05T16:56:00.699Z",
-      //     "reacts": []
-      //   },
-      //   {
-      //     "_id": "647f36fbdecbede46dce9016",
-      //     "productID": "63c8ec052e84587deb4dc6b6",
-      //     "title": "Hello world",
-      //     "rating": 5,
-      //     "description": "Hello world",
-      //     "like": 0,
-      //     "dislike": 0,
-      //     "review_date": "2023-06-06T13:39:07.657Z",
-      //     "reacts": []
-      //   },
-      //   {
-      //     "_id": "647f370bdecbede46dce9017",
-      //     "productID": "63c8ec052e84587deb4dc6b6",
-      //     "title": "HI ",
-      //     "rating": 5,
-      //     "description": "Know everyting",
-      //     "like": 0,
-      //     "dislike": 0,
-      //     "review_date": "2023-06-06T13:39:23.703Z",
-      //     "reacts": []
-      //   },
-      //   {
-      //     "_id": "647f4a21f45304e0e94f5854",
-      //     "productID": "63c8ec052e84587deb4dc6c0",
-      //     "title": "Hello world",
-      //     "rating": 4,
-      //     "description": "YOur app is not working\n",
-      //     "like": 3,
-      //     "dislike": 0,
-      //     "review_date": "2023-06-06T15:00:49.511Z",
-      //     "reacts": []
-      //   },
-      //   {
-      //     "_id": "647f526d5980c867fa104092",
-      //     "productID": "63c8ec052e84587deb4dc6a9",
-      //     "title": "Hello",
-      //     "rating": 4,
-      //     "description": "hdll",
-      //     "like": 0,
-      //     "dislike": 0,
-      //     "review_date": "2023-06-06T15:36:13.191Z",
-      //     "reacts": []
-      //   }
-      // ]
+
       const resi = await reviewCollection.deleteMany({})
       res.json(resi)
     })

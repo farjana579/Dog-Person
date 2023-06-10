@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
 .container {
     margin: 20px 30px;
     padding: 20px 0 0 0;
@@ -26,6 +28,63 @@
     background-color: rgba(107, 107, 107, 0.486);
 }
 
+.predict_section {
+    display: flex;
+    width: 60%;
+    height: 450px;
+    border-radius: 12px;
+    margin: 9px;
+    position: relative;
+}
+
+.predict_img {
+    width: 200px;
+    height: fit-content;
+    top: 0;
+    padding: 5px;
+    border: 1px solid rgb(25, 139, 192);
+    border-radius: 10px;
+    left: 0;
+}
+
+.predict_div {
+    height: 100%;
+    width: 100%;
+    background-color: #3e2c1e9f;
+    margin-right: 100px;
+    border-left: 2px solid white;
+    margin-left: 10px;
+}
+
+.loading_spinner {
+    display: flex;
+    height: 100%;
+    color: white;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.predict_class {
+    color: rgb(148, 189, 250);
+    margin-top: 22px;
+    font-size: 20px;
+    font-family: 'Poppins', sans-serif;
+    text-transform: uppercase;
+}
+
+.predict_class span {
+    color: white;
+    display: inline-block;
+    padding: 0 10px;
+    border-radius: 5px;
+    background-color: gray;
+}
+
+.predict_class::before {
+    content: '----- ';
+    width: 30px;
+}
 
 .classifyContainer {
     width: 39%;

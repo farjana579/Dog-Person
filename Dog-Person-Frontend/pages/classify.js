@@ -19,6 +19,7 @@ const Classify = () => {
     }
     async function runmodel() {
         const url = "https://teachablemachine.withgoogle.com/models/-vXfty1xE/";
+        // const url = "https://teachablemachine.withgoogle.com/models/IerQIOPqD/"
         const modelUrl = url + "model.json"
         const metaDataUrl = url + "metadata.json"
         model = await tmImage.load(modelUrl, metaDataUrl);
@@ -26,8 +27,20 @@ const Classify = () => {
 
         const img = document.createElement("img");
         img.src = puppy;
+        console.log(img);
+
         const prediction = await model.predict(img);
+        for (let i = 0; i < prediction.length; i++) {
+            for (let j = i + 1; j < prediction.length; j++) {
+                if (prediction[j].probability > prediction[i].probability) {
+                    const swap = prediction[i];
+                    prediction[i] = prediction[j]
+                    prediction[j] = swap;
+                }
+            }
+        }
         setPredictions(prediction);
+        console.log(prediction);
     }
     const handlePredict = () => {
         setPredictBtn(!predictBtn);

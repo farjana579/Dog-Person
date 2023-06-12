@@ -1,0 +1,64 @@
+$borderColor: black;
+$btnColor: #E76F51;
+
+.registrationHeader{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+
+    h1 {
+        font-size: 50px;
+    }
+}
+
+.registrationBox {
+    display: flex;
+    justify-content: center;
+
+    form{
+        border: 1px solid $borderColor;
+        width: 40%;
+        padding: 30px 40px;
+        border-radius: 10px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;  
+        
+        input{
+            display: block;
+            border: 1px solid $borderColor;
+            border-radius: 5px;
+            padding: 15px 20px;
+            margin: 10px;
+            width:100%;
+            font-size: 1.2em;
+        }    
+    }
+
+    a{
+        margin-top: 15px;
+    }
+}
+
+.btnStyle {
+    padding: 9px 20px;
+    border: 0;
+    color: white;
+    font-size: 20px;
+    border-radius: 7px;
+    background-color: $btnColor;
+    box-shadow: 2px 2px 9px 3px gray;
+    transition: background-color .4s ease-in;
+    margin-top: 20px;
+
+   &:hover {
+        background-color: #f14f27;
+    }
+}
+
+.errorMessage{
+    color: #f90505;
+    font-size: 10px;
+    
+}

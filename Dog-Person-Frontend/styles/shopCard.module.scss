@@ -1,0 +1,75 @@
+.bestCard {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    width: 300px;
+    box-shadow: 1px 1px 4px 4px rgb(216, 216, 216);
+    border-radius: 9px;
+    padding: 9px 7px;
+    /* hiding image overflow when hovered. */
+    overflow: hidden;
+
+    img {
+        border-top-right-radius: 9px;
+        border-top-left-radius: 9px;
+        width: 280px;
+        height: 220px;
+        transition: transform 0.5s;
+    }
+
+    &:hover img {
+        transform: scale(1.1);
+    }
+    
+    h3 {
+        font-size: 19px;
+        margin: 0;
+        margin-top: 9px;
+        margin-bottom: 7px;
+        max-width: 100%;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        white-space: nowrap;
+        cursor: default;
+        padding: 0;
+    }
+
+    button {
+        margin: 5px auto;
+    }
+    
+}
+
+.price {
+    font-size: 22px;
+    font-weight: 600;
+}
+
+.paragraph {
+    margin: 9px 0;
+    overflow-y: hidden;
+    height: 80px;
+}
+.btnStyle {
+    padding: 9px 12px;
+    border: 0;
+    color: white;
+    font-size: 20px;
+    border-radius: 7px;
+    background-color: #E76F51;
+    box-shadow: 1px 1px 6px 4px rgb(209, 209, 209);
+    transition: background-color .4s ease-in;
+
+    &:hover {
+        background-color: #f14f27;
+    }
+    &:active {
+        box-shadow: 1px 1px 6px 2px rgb(212, 212, 212);
+    }
+}
+.auto_center {
+    align-items: center;
+    margin: 0 auto;
+
+}

@@ -16,7 +16,7 @@ const Footer = () => {
             <a>License</a>
           </div>
           <div className={styles.footerFeatures}>
-            <a>About</a>
+            <a href="/aboutUsIndex">About</a>
             <a>Feature</a>
             <a>Pricing</a>
             <a>Carriers</a>

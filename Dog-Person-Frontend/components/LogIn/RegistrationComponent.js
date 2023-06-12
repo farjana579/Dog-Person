@@ -61,7 +61,6 @@ const RegistrationComponent = () => {
       <div className={styles.registrationBox}>
         <form onSubmit={handleLogin}>
           <input type="text" id="Email" name="email" placeholder="Email" />
-
           <input
             type="password"
             id="password"
@@ -69,11 +68,12 @@ const RegistrationComponent = () => {
             placeholder="Password"
           />
           <a>
-            <i>Forgot password?</i>
+            <i>
+            Forgot password?</i>
           </a>
           <div className={styles.remember}>
             <input type="checkbox" id="remember" />
-            <label htmlFor="remember">Remeber me.</label>
+            <label htmlFor="remember">Remember me.</label>
           </div>
           <button onClick={handleLogin} className={styles.btnStyle}>
             LOG IN

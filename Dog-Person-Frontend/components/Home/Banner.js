@@ -16,7 +16,9 @@ const Banner = () => {
             sint. Velit officia consequat duis enim velit mollit. Exercitation
             veniam consequat sunt nostrud amet.
           </p>
-          <button className={styles.btnStyle}>classify</button>
+          <button className={styles.btnStyle}>
+            <a href="/classify">classify</a>
+          </button>
         </div>
         <div className={styles.dogImage}>
           <img src={image.src}></img>

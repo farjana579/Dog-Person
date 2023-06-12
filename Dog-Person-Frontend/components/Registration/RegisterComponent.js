@@ -13,8 +13,6 @@ const RegisterComponent = () => {
   useEffect(() => {
     axios.get(`http://localhost:4000/users`).then((res) => {
       setUserNameUsed(res.data);
-
-
     });
   }, []);
   //checking if user name available in database
@@ -103,8 +101,8 @@ const RegisterComponent = () => {
       phone: info.contact,
       password: info.password,
     };
-    localStorage.setItem("username", info.name)
-    localStorage.setItem("Email", info.email)
+    localStorage.setItem("username", info.name);
+    localStorage.setItem("Email", info.email);
     axios.post(`http://localhost:4000/users`, finalData).then((res) => {
       if (res.data.insertedId) {
         alert("successful");

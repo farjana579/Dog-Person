@@ -22,7 +22,6 @@ const Classify = () => {
         const modelUrl = url + "model.json"
         const metaDataUrl = url + "metadata.json"
         model = await tmImage.load(modelUrl, metaDataUrl);
-        const classCount = model.getTotalClasses();
 
         const img = document.createElement("img");
         img.src = puppy;
@@ -62,6 +61,8 @@ const Classify = () => {
                 </div>
 
             }
+
+            {/* Initial UI */}
             <div className={style.classifyContainer}>
                 <div>
                     <div className={style.pageTitle}>
@@ -72,6 +73,8 @@ const Classify = () => {
                     </div>
                     <div className={style.uploadImage}>
                         <button className={style.classifyButton}>Upload an Image</button>
+
+                        {/* Accept image file only */}
                         <input type="file" src="" alt="image input" className={style.imageInput} accept="image/*" onChange={handleImageUpload} />
                     </div>
                     {
@@ -79,6 +82,7 @@ const Classify = () => {
                     }
                 </div>
             </div>
+            {/* End of initial ui */}
         </div>
     );
 };

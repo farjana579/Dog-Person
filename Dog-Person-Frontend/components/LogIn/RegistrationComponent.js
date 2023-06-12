@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from "react";
+import { useRouter } from "next/router";
 import logo from "../../image/pawBlack.png";
-import axios, { Axios } from "axios";
-import styles from "../../styles/Registration.module.scss";
-// import styles from "../../styles/registration.module.css";
+import axios from "axios";
+import styles from "../../styles/registration.module.css";
+import { Checkbox } from "@mui/material";
 const RegistrationComponent = () => {
-  const [showHome, setShowHome] = useState(false);
+  const router = useRouter();
   useEffect(() => {
-    if (localStorage.getItem("Emaill") && localStorage.getItem("Password")) {
-      setShowHome("true");
+    if (localStorage.getItem("Email") && localStorage.getItem("Password") || sessionStorage.getItem("Email") && sessionStorage.getItem("Password")) {
+      router.push("/");
     }
   });
   const handleLogin = (e) => {
@@ -31,10 +32,19 @@ const RegistrationComponent = () => {
       )
       .then((res) => {
         if (res.data) {
-          localStorage.setItem("Email", info.email);
-          localStorage.setItem("Password", info.password);
+          localStorage.clear();
+          if (document.getElementById("remember").checked) {
+            localStorage.setItem("username", res.data.name);
+            localStorage.setItem("Email", info.email);
+            localStorage.setItem("Password", info.password);
+          }
+          else {
+            sessionStorage.setItem("username", res.data.name);
+            sessionStorage.setItem("Email", info.email);
+            sessionStorage.setItem("Password", info.password);
+          }
+          router.push("/");
           alert("Success");
-          window.location.reload();
         } else {
           alert("failed");
         }
@@ -47,34 +57,38 @@ const RegistrationComponent = () => {
         <img src={logo.src}></img>
         <h1>Dog Person</h1>
       </div>
-      {showHome ? (
-        <index />
-      ) : (
-        <div className={styles.registrationBox}>
-          <form onSubmit={handleLogin}>
-            <input type="text" id="Email" name="email" placeholder="Email" />
 
-            <input
-              type="password"
-              id="password"
-              name="password"
-              placeholder="Password"
-            />
-            <a>
-              <i>Forgot password?</i>
-            </a>
-            <button onClick={handleLogin} className={styles.btnStyle}>
-              LOG IN
-            </button>
-            <a href="/registration">
-              New at Dog Person?{" "}
-              <span style={{ color: "#E76F51" }}>
-                Please create a new account.
-              </span>
-            </a>
-          </form>
-        </div>
-      )}
+      <div className={styles.registrationBox}>
+        <form onSubmit={handleLogin}>
+          <input type="text" id="Email" name="email" placeholder="Email" />
+
+          <input
+            type="password"
+            id="password"
+            name="password"
+            placeholder="Password"
+          />
+          <a>
+            <i>Forgot password?</i>
+          </a>
+          <div className={styles.remember}>
+            <input type="checkbox" id="remember" />
+            <label htmlFor="remember">Remeber me.</label>
+          </div>
+          <button onClick={handleLogin} className={styles.btnStyle}>
+            LOG IN
+          </button>
+          {/* {showHome === true && (
+            <button className={styles.btnStyle}>LOG Out</button>
+          )} */}
+          <a href="/registration">
+            New at Dog Person?{" "}
+            <span style={{ color: "#E76F51" }}>
+              Please create a new account.
+            </span>
+          </a>
+        </form>
+      </div>
     </div>
   );
 };

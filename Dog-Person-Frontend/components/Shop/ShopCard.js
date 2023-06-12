@@ -4,7 +4,7 @@ import { Rating } from '@mui/material';
 import styles from '../../styles/shopCard.module.scss'
 // import styles from '../../styles/shopCard.module.css'
 // Shop card component.
-const ShopCard = ({ image, name, price, avgrating, ratingcount, paragraph, id }) => {
+const ShopCard = ({ image, name, price, avgrating, ratingcount, paragraph, id, type, subtype }) => {
     console.log(id);
     return (
         <div>
@@ -22,6 +22,8 @@ const ShopCard = ({ image, name, price, avgrating, ratingcount, paragraph, id })
                     */}
                     <Rating value={avgrating} readOnly precision={0.1} />&nbsp;({ratingcount ? ratingcount : 0})
                 </div>
+                <div><span className={styles
+                    .category}>{type}</span><span className={styles.category}>{subtype}</span></div>
                 <div title={paragraph} className={styles.paragraph}>{paragraph}</div>
                 <div className={styles.price}>৳ {price ? price : 0}</div>
                 <a href={`/shop/${id}`} className={styles.auto_center}>

@@ -4,6 +4,7 @@ import { useRouter } from 'next/router';
 import React, { useEffect, useState } from 'react';
 import styles from '../../styles/productDetails.module.css'
 import ReviewContainer from './ReviewContainer';
+import AvgRating from './AvgRating';
 const ProDetails = () => {
     // product holds the details of the product. initial value is a empty object.
     const [product, setProduct] = useState({
@@ -81,7 +82,7 @@ const ProDetails = () => {
                 </div>
                 <div className={styles.primaryDescription}>
                     <div className={styles.brand}>Brand:  <span>{product.brand}</span></div>
-                    <div className={styles.ratings}><Rating readOnly value={product.avg_rating} /> ({product.rating} Ratings)</div>
+
                     <div className={styles.price}>৳ {product.price}</div>
                     <div className={styles.vat}>All prices include VAT.</div>
                     <div className={styles.weight}>Weight: {product.weight}kg</div>
@@ -108,16 +109,24 @@ const ProDetails = () => {
                         <div className={styles.info}>Dog</div>
                     </div>
                     <div>
-                        <div className={styles.type}>Pet Type</div>
-                        <div className={styles.info}>Dog</div>
+                        <div className={styles.type}>Brand</div>
+                        <div className={styles.info}>{product.brand}</div>
                     </div>
                     <div>
-                        <div className={styles.type}>Pet Type</div>
-                        <div className={styles.info}>Dog</div>
+                        <div className={styles.type}>Product</div>
+                        <div className={styles.info}>{product.type}</div>
                     </div>
                     <div>
-                        <div className={styles.type}>Pet Type</div>
-                        <div className={styles.info}>Dog</div>
+                        <div className={styles.type}>Sub type</div>
+                        <div className={styles.info}>{product.subtype}</div>
+                    </div>
+                    <div>
+                        <div className={styles.type}>Weight</div>
+                        <div className={styles.info}>{product.weight}</div>
+                    </div>
+                    <div>
+                        <div className={styles.type}>Price</div>
+                        <div className={styles.info}>{product.price}</div>
                     </div>
                 </div>
             </div>

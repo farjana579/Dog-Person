@@ -5,6 +5,8 @@ import axios from 'axios';
 
 const WriteReview = ({ id }) => {
   const [value, setValue] = useState(0)
+  const username = localStorage.getItem("username") || sessionStorage.getItem("username")
+  console.log(username);
   const handleAddReview = e => {
     // getting value from input.
     const title = document.getElementsByTagName('input')[1].value;
@@ -12,8 +14,8 @@ const WriteReview = ({ id }) => {
     const rating = value;
 
     // gather them.
-    const data = { title, description, rating };
-    // console.log(data);
+    const data = { title, description, rating, username };
+    console.log(data);
     // axios post
     axios.post(`http://localhost:4000/reviews/${id}`, data)
       .then(res => console.log(res.data))

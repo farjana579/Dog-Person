@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from "react";
 import logo from "../../image/pawBlack.png";
+import { useRouter } from "next/router";
 import axios from "axios";
 import styles from "../../styles/registration.module.css";
 const RegisterComponent = () => {
+  const router = useRouter();
   const [errorEmail, setErrorEmail] = useState(false);
   const [userNameUsed, setUserNameUsed] = useState([]);
   const [errorUser, setErrorUser] = useState(false);
@@ -11,6 +13,8 @@ const RegisterComponent = () => {
   useEffect(() => {
     axios.get(`http://localhost:4000/users`).then((res) => {
       setUserNameUsed(res.data);
+
+
     });
   }, []);
   //checking if user name available in database
@@ -68,7 +72,7 @@ const RegisterComponent = () => {
       setErrorPhone(false);
     }
   };
-  
+
   // register user
   const handleRegistration = (e) => {
     e.preventDefault();
@@ -99,9 +103,12 @@ const RegisterComponent = () => {
       phone: info.contact,
       password: info.password,
     };
+    localStorage.setItem("username", info.name)
+    localStorage.setItem("Email", info.email)
     axios.post(`http://localhost:4000/users`, finalData).then((res) => {
       if (res.data.insertedId) {
         alert("successful");
+        router.push("/");
       }
     });
   };

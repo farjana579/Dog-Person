@@ -81,3 +81,15 @@
     margin: 0 auto;
 
 }
+
+/* shopcard category*/
+.category {
+    background-color: #7269c4;
+    color: white;
+    display: inline-block;
+    margin-right: 10px;
+    padding: 2px;
+    font-size: 15px;
+    border-radius: 5px;
+
+}

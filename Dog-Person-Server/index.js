@@ -16,6 +16,7 @@ const app = express(); // backend in a variable
 //     resave: false,
 //   })
 // );
+
 app.use(cors()); // using cors
 require("dotenv").config(); // configuring dot env
 app.use(express.json());
@@ -95,76 +96,62 @@ async function server() {
         res.json(result);
       }
 
-      // console.log(result);
-
-      // const result = await productCollection.find({}).toArray();
-      // const page = parseInt(query.page);
-      // const perPage = 20;
-      // const cursor = productCollection
-      //   .find({})
-      //   .skip((page - 1) * perPage)
-      //   .limit(perPage);
-      // const result = await cursor.toArray();
-      // res.json(result);
-      // const cursor = productCollection.aggregate([
-      //   {
-      //     $facet: {
-      //       product: [
-      //         { $match: {} },
-      //         { $skip: page * perpage },
-      //         { $limit: perpage },
-      //       ],
-      //       total: [
-      //         {
-      //           $group: {
-      //             _id: null,
-      //             count: { $sum: 1 },
-      //           },
-      //         },
-      //       ],
-      //     },
-      //   },
-      // ]);
-      // const cursor = productCollection.find().skip(page * perpage).limit(perpage);
-      // const result = await cursor.toArray();
-      // res.json(result);
     });
+
 
     app.get("/reviews/:id", async (req, res) => {
       const id = req.params.id;
       const filter = {
         productID: ObjectId(id),
       };
-      console.log(filter);
-      // res.json('i')
+
       const cursor = reviewCollection.find(filter);
       const result = await cursor.toArray();
       res.json(result);
     });
+    app.get("/reviews", async (req, res) => {
+
+      const resi = await reviewCollection.deleteMany({})
+      res.json(resi)
+    })
     app.post("/reviews/:id", async (req, res) => {
       const id = req.params.id;
-      const { rating, description, title } = req.body;
+      const { rating, description, title, username } = req.body;
       const doc = {
         productID: ObjectId(id),
         title,
         rating,
         description,
         like: 0,
+        username,
         dislike: 0,
         review_date: new Date(),
+        react: {}
       };
       console.log(doc);
       const result = await reviewCollection.insertOne(doc);
       res.json(result);
     });
-    
-    
+    app.put('/reviews/:id', async (req, res) => {
+      const body = req.body;
+      const id = req.params.id;
+      const filter = {
+        _id: ObjectId(id)
+      }
+      const result = await reviewCollection.updateOne(filter, {
+        $set: {
+          ...body
+        }
+      })
+      res.json(result);
+    })
+
     app.get("/login", async (req, res) => {
       const { email, password } = req.query;
       const filter = { email, password };
       const result = await users.findOne(filter);
       // req.session.isAuth = true;
-      res.json(result ? true : false);
+      res.json(result ? result : false);
     });
 
     app.get("/users/:email", async (req, res) => {
@@ -208,7 +195,16 @@ async function server() {
   }
 }
 server().catch(console.dir);
- 
+
+
+
+
+// //for graphql section
+// const {ApolloServer}=require('apollo-sever');
+// const mongoose=require('mongoose');
+// const typeDefs=require('./graphql/typeDefs');
+// const resolvers=require('graphql/resolvers');
+
 app.get("/", (req, res) => {
   res.json("Hello world");
 });

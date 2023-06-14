@@ -2,8 +2,6 @@ const express = require("express");
 const cors = require("cors"); // cross origin resource sharing
 const mongodb = require("mongodb"); // mongo db
 
- 
-
 const { MongoClient } = mongodb; // to connect mongodb
 const app = express(); // backend in a variable
 //const cookieParser = require("cookie-parser");
@@ -27,13 +25,47 @@ app.use(express.json());
 const port = 4000;
 
 const url =
-  "mongodb+srv://WEBTOON:NTDNTDNTD@cluster0.wxtmufn.mongodb.net/?retryWrites=true&w=majority";
+  "mongodb+srv://WEBTOON:NTDNTDNTD@cluster0.wxtmufn.mongodb.net/DogPerson?retryWrites=true&w=majority";
+
 const client = new MongoClient(url, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });
 
 const ObjectId = mongodb.ObjectId;
+
+//-------mongoose------//
+
+const mongoose = require("mongoose");
+const { ApolloServer, gql } = require("apollo-server-express");
+
+const typeDefs = require("./typeDefs");
+const resolvers = require("./resolvers");
+
+async function startServer() {
+  const app = express();
+  const apolloServer = new ApolloServer({
+    typeDefs,
+    resolvers,
+  });
+
+  await apolloServer.start();
+
+  apolloServer.applyMiddleware({ app: app, path: "/gql" });
+
+  app.use((req, res) => {
+    res.send("Hello from gql");
+  });
+
+  mongoose
+    .connect(url)
+    .then(() => console.log("Database connected!"))
+    .catch((err) => console.log(err));
+
+  app.listen(4001, () => console.log("Server is running on port 4001"));
+}
+
+startServer();
 
 async function server() {
   try {
@@ -206,7 +238,7 @@ server().catch(console.dir);
 app.get("/", (req, res) => {
   res.json("Hello world");
 });
- 
+
 app.listen(port, () => {
   console.log(port);
 });

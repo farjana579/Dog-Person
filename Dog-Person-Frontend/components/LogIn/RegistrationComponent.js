@@ -11,6 +11,21 @@ const RegistrationComponent = () => {
       router.push("/");
     }
   });
+
+
+    var query = `query GetUser($item: String) {
+        getUser(email: $item) {
+            name
+            email
+            password
+        }
+      }`;
+
+    const endpoint = "http://localhost:4001/gql";
+
+
+
+  
   const handleLogin = (e) => {
     e.preventDefault();
     const inputs = document.getElementsByTagName("input");
@@ -25,21 +40,31 @@ const RegistrationComponent = () => {
       }
       info[name] = value;
     }
+    const item = info.email;
 
-    axios
-      .get(
-        `http://localhost:4000/login?email=${info.email}&password=${info.password}`
-      )
-      .then((res) => {
-        if (res.data) {
-          localStorage.clear();
+      fetch(endpoint, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify({
+          query,
+          variables: { item },
+        }),
+      })
+        .then((res) => res.json())
+        .then((data) =>{
+        if (data.data) {
+    //       localStorage.clear();
+    console.log(data.data)
           if (document.getElementById("remember").checked) {
-            localStorage.setItem("username", res.data.name);
+            localStorage.setItem("username", data.data.getUser.name);
             localStorage.setItem("Email", info.email);
             localStorage.setItem("Password", info.password);
           }
           else {
-            sessionStorage.setItem("username", res.data.name);
+            sessionStorage.setItem("username", data.data.getUser.name);
             sessionStorage.setItem("Email", info.email);
             sessionStorage.setItem("Password", info.password);
           }

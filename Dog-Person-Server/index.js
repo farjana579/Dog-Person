@@ -1,6 +1,9 @@
 const express = require("express");
 const cors = require("cors"); // cross origin resource sharing
 const mongodb = require("mongodb"); // mongo db
+
+ 
+
 const { MongoClient } = mongodb; // to connect mongodb
 const app = express(); // backend in a variable
 //const cookieParser = require("cookie-parser");
@@ -20,6 +23,7 @@ const app = express(); // backend in a variable
 app.use(cors()); // using cors
 require("dotenv").config(); // configuring dot env
 app.use(express.json());
+
 const port = 4000;
 
 const url =
@@ -95,9 +99,7 @@ async function server() {
         const result = await cursor.toArray();
         res.json(result);
       }
-
     });
-
 
     app.get("/reviews/:id", async (req, res) => {
       const id = req.params.id;
@@ -110,10 +112,9 @@ async function server() {
       res.json(result);
     });
     app.get("/reviews", async (req, res) => {
-
-      const resi = await reviewCollection.deleteMany({})
-      res.json(resi)
-    })
+      const resi = await reviewCollection.deleteMany({});
+      res.json(resi);
+    });
     app.post("/reviews/:id", async (req, res) => {
       const id = req.params.id;
       const { rating, description, title, username } = req.body;
@@ -126,25 +127,25 @@ async function server() {
         username,
         dislike: 0,
         review_date: new Date(),
-        react: {}
+        react: {},
       };
       console.log(doc);
       const result = await reviewCollection.insertOne(doc);
       res.json(result);
     });
-    app.put('/reviews/:id', async (req, res) => {
+    app.put("/reviews/:id", async (req, res) => {
       const body = req.body;
       const id = req.params.id;
       const filter = {
-        _id: ObjectId(id)
-      }
+        _id: ObjectId(id),
+      };
       const result = await reviewCollection.updateOne(filter, {
         $set: {
-          ...body
-        }
-      })
+          ...body,
+        },
+      });
       res.json(result);
-    })
+    });
 
     app.get("/login", async (req, res) => {
       const { email, password } = req.query;
@@ -196,9 +197,6 @@ async function server() {
 }
 server().catch(console.dir);
 
-
-
-
 // //for graphql section
 // const {ApolloServer}=require('apollo-sever');
 // const mongoose=require('mongoose');
@@ -208,6 +206,7 @@ server().catch(console.dir);
 app.get("/", (req, res) => {
   res.json("Hello world");
 });
+ 
 app.listen(port, () => {
   console.log(port);
 });

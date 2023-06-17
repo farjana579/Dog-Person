@@ -41,7 +41,8 @@ const ProDetails = () => {
             productBrand: product.brand,
             price: product.price,
             quantity: parseInt(doc.value),
-            buyerID: userInfo
+            buyerID: userInfo,
+            productImg:product.picture
         }
         // console.log(productInfo);
         axios.post(`http://localhost:4000/order-details`, productInfo)
@@ -65,7 +66,7 @@ const ProDetails = () => {
             {/* initial pic */}
             <div className={styles.infoContainer}>
                 <div className={styles.picDes}>
-                    < img src={product.picture[current]} />
+                    < img src={product.picture} />
                     <div className={styles.morepic}>
                         {
                             // product?.picture?.map((img, index) => {
